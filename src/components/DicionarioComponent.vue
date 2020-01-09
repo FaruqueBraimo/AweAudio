@@ -3,12 +3,12 @@
 <q-page>
 <q-list class="rounded-borders">
               
-              <template   v-for="i in 20"  >
-                  <q-item class="q-mb-sm" clickable v-ripple :key="i" > 
+              <template   v-for="i in palavras"  >
+                  <q-item class="q-mb-sm" clickable v-ripple :key="i.nome" > 
                     
 
                       <q-item-section @click="details(1)" >
-                          <q-item-label>{{palavras}}</q-item-label>
+                          <q-item-label>{{i.traducao}}</q-item-label>
                           <q-item-label caption lines="1">Acessado aos : 31/01/2012</q-item-label>
                       </q-item-section>
               <q-item-section side>
@@ -54,7 +54,7 @@ export default {
 ,
       saveObjet: {
 
-        name : 'ok'
+        name : 'comer'
       }
     }
     
@@ -72,7 +72,7 @@ export default {
 
       details(id){
                this.$router.push('palavra/' + id)
-               this.addPalavra(this.saveObjet);
+              //  this.addPalavra(this.saveObjet);
             }
  
   }

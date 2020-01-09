@@ -5,7 +5,7 @@
             outlined
             dense
             v-model="text"
-            color="white"
+            color="grey"
            
             placeholder="Pesquise ..."
         >

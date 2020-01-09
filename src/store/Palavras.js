@@ -71,12 +71,12 @@ const actions = {
         dbPalavras.add(payload)
             .then(function(docRef) {
                 commit('loading', false)
-                showSuccessMessage('Cargo agendada com sucesso!')
+                // showSuccessMessage('Cargo agendada com sucesso!')
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
                 commit('loading', false)
-                showErrorMessage(error.message)
+                // showErrorMessage(error.message)
             });
     },
     updatePalavra ({commit}, payload) {
@@ -85,7 +85,7 @@ const actions = {
         dbPalavras.doc(payload.id).update(payload.updates)
             .then(function(docRef) {
                 commit('loading', false)
-                showSuccessMessage('Cargo actualizada com sucesso!')
+                // showSuccessMessage('Cargo actualizada com sucesso!')
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);
@@ -99,12 +99,12 @@ const actions = {
         dbPalavras.doc(id).delete()
             .then(function(docRef) {
                 commit('loading', false)
-                showSuccessMessage('Cargo deletada com sucesso!')
+                // showSuccessMessage('Cargo deletada com sucesso!')
             })
             .catch(function(error) {
                 console.error("Error removing document: ", error);
                 commit('loading', false)
-                showErrorMessage(error.message)
+                // showErrorMessage(error.message)
             });
 
 
