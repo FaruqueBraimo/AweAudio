@@ -8,7 +8,7 @@
                     
 
                       <q-item-section @click="details(1)" >
-                          <q-item-label>{{i.traducao}}</q-item-label>
+                          <q-item-label class="text-body1">{{i.traducao}}</q-item-label>
                           <q-item-label caption lines="1">Acessado aos : 31/01/2012</q-item-label>
                       </q-item-section>
               <q-item-section side>

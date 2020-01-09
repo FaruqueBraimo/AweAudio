@@ -7,7 +7,10 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: 'about', component: () => import('pages/About.vue') },
       { path: 'definicoes', component: () => import('pages/Definicoes.vue') },
-      { path: 'palavra/:id', component: () => import('pages/Palavra.vue') }
+      { path: 'palavra/:id', component: () => import('pages/Palavra.vue') },
+      { path: 'favoritos', component: () => import('pages/Favoritos.vue') },
+
+
 
 
     ]

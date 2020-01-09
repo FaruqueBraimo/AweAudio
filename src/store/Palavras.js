@@ -79,13 +79,13 @@ const actions = {
                 // showErrorMessage(error.message)
             });
     },
-    updatePalavra ({commit}, payload) {
+    updatePalavra({commit}, payload) {
         commit('loading', true)
         payload.updatedAt = new Date();
         dbPalavras.doc(payload.id).update(payload.updates)
             .then(function(docRef) {
                 commit('loading', false)
-                // showSuccessMessage('Cargo actualizada com sucesso!')
+             console.log('Cargo actualizada com sucesso!')
             })
             .catch(function(error) {
                 console.error("Error adding document: ", error);

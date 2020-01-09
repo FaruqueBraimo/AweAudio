@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-md row items-start">
-      <q-card flat bordered v-for="palavra in palavras" :key="palavra.traducao" style="width: 500px">
+      <q-card flat bordered v-for="(palavra,id) in palavras" :key="id" style="width: 500px">
         <q-card-section  >
       
 <div class="row"> 
@@ -17,8 +17,8 @@
         <div class="col-6 q-pl-md">
          <q-card-actions align="right">
          <q-btn flat round color="teal" icon="volume_up" />
-        <q-btn flat round color="red" icon="favorite" />
-         </q-card-actions>
+        <q-btn flat round :color="palavra.favorito==true ? 'red' : 'black' " icon="favorite" @click="favorito(id)"/>
+          </q-card-actions>
               </div>  
               </div>
          
@@ -62,22 +62,54 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
+import { log } from 'util'
 
 export default {
   computed: {
            ...mapState ('palavra', [
                'palavras'
-           ]),},
+           ]),
+           
+           
+           cor(){
+
+
+           }
+           
+           
+           },
 
   data () {
     return {
       skeletonAnimations: [
         'wave'
-      ]
-    }
+        
+      ],
+      saveObject: {
+        favorito : false
+        } 
+    
+  }
+  
   },
+    methods:{
+        ...mapActions ('palavra', [
+               'updatePalavra'
+           ]),
 
 
+      favorito(val){
+
+            if (val){
+             this.saveObject.favorito = !this.palavras[val].favorito 
+              
+            }
+          this.updatePalavra ({
+                        id: val,
+                        updates: this.saveObject
+                    })
+      }
+    }
 
 
 }
