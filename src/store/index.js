@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 
 // import example from './module-example'
 
+import palavra from './Palavras'
+
 Vue.use(Vuex)
 
 /*
@@ -18,6 +20,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example
+       palavra 
+
     },
 
     // enable strict mode (adds overhead!)

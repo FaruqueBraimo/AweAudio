@@ -8,7 +8,7 @@
                     
 
                       <q-item-section @click="details(1)" >
-                          <q-item-label>Comer</q-item-label>
+                          <q-item-label>{{palavras}}</q-item-label>
                           <q-item-label caption lines="1">Acessado aos : 31/01/2012</q-item-label>
                       </q-item-section>
               <q-item-section side>
@@ -41,18 +41,30 @@
 
 
 <script>
-export default {
+import { mapActions, mapState } from 'vuex'
 
+export default {
+  computed: {
+           ...mapState ('palavra', [
+               'palavras'
+           ]),},
   data () {
     return {
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+,
+      saveObjet: {
+
+        name : 'ok'
+      }
     }
     
   }
 
   ,
      methods:{
-
+...mapActions('palavra', [
+               'addPalavra'
+           ]),
 
       audio() {
           alert('odjaa')
@@ -60,6 +72,7 @@ export default {
 
       details(id){
                this.$router.push('palavra/' + id)
+               this.addPalavra(this.saveObjet);
             }
  
   }

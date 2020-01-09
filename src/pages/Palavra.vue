@@ -3,7 +3,7 @@
     <div class="q-gutter-md row items-start">
       <q-card flat bordered v-for="animation in skeletonAnimations" :key="animation" style="width: 500px">
         <q-card-section>
-          <div class="text-h6">Comer</div>
+          <div class="text-h6">{{palavras}}</div>
         </q-card-section>
 
         <q-separator />
@@ -18,13 +18,24 @@
 
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
+  computed: {
+           ...mapState ('palavra', [
+               'palavras'
+           ]),},
+
   data () {
     return {
       skeletonAnimations: [
         'wave'
       ]
     }
-  }
+  },
+
+
+
+
 }
 </script>

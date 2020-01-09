@@ -5,7 +5,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  name: 'App'
-}
+  name: 'App',
+  created () {
+
+        this.listenPalavraRealTimeChanges ()
+        
+
+
+    },
+
+
+      methods: {
+     ...mapActions('palavra', [
+              'listenPalavraRealTimeChanges',
+          ]),
+}}
 </script>

@@ -1,10 +1,6 @@
 
 <template>
-
 <q-page v-if="mostrar" >
-
- 
-
 
 <div class="q-pa-sm">
     
