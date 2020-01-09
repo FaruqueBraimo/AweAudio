@@ -49,6 +49,28 @@
               </q-item-section>
             </q-item>
 
+            
+            <q-item clickable v-ripple to="favoritos" >
+              <q-item-section avatar>
+                 <q-icon name="favorite" />
+              </q-item-section>
+
+              <q-item-section>
+                Favoritos
+              </q-item-section>
+            </q-item>
+
+            
+            <q-item clickable v-ripple >
+              <q-item-section avatar>
+                <q-icon name="history" />
+              </q-item-section>
+
+              <q-item-section>
+               Histórico
+              </q-item-section>
+            </q-item>
+
 
 
 
@@ -128,6 +150,8 @@ titulo (){
   else if  ( caminho == "/") return "MozBantu"
   else if  ( caminho == "/about") return "About"
   else if  ( caminho == "/palavradodia") return "Palavra do dia"
+  else if  ( caminho == "/favoritos") return "Favoritos"
+
   else if  ( caminho == "/definicoes") return "Definiçoes"
   else return "Definição"
 
