@@ -16,7 +16,7 @@
       
         <div class="col-6 q-pl-md">
          <q-card-actions align="right">
-         <q-btn flat round color="teal" icon="volume_up" />
+         <q-btn flat round color="light-green-6" icon="record_voice_over" />
         <q-btn flat round :color="palavra.favorito==true ? 'red' : 'black' " icon="favorite" @click="favorito(id)"/>
           </q-card-actions>
               </div>  

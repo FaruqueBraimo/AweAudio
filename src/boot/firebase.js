@@ -27,6 +27,8 @@ export const db = firebaseApp.firestore();
 // db.enablePersistence() //activando o cacheamento de dados para o funcionamento offline
 
 export const dbPalavras = db.collection("palavras");
+export const dbconfiguracao = db.collection("configuracao");
+
 
 
 

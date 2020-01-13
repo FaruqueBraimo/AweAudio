@@ -9,7 +9,11 @@ const routes = [
       { path: 'definicoes', component: () => import('pages/Definicoes.vue') },
       { path: 'palavra/:id', component: () => import('pages/Palavra.vue') },
       { path: 'favoritos', component: () => import('pages/Favoritos.vue') },
+      { path: 'historico', component: () => import('pages/Historico.vue') },
+      { path: 'diario', component: () => import('pages/PalavaraDoDia.vue') },
+      { path: 'questao', component: () => import('pages/Questao.vue') },
 
+      
 
 
 

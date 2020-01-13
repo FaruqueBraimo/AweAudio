@@ -1,20 +1,20 @@
 <template>
-<q-page class="q-pa-lg" v-if="mostrar"> 
+<q-page class="q-pa-sm " v-if="mostrar"> 
    
   <div class="text-body1 " >
         
-    <q-card class="my-card  text-weight-light touch "
+    <q-card  flat class="my-card  text-weight-light touch "
     square
     >
-      <q-card-section>
-       Este aplicativo contém  uma série de palavras em  <b class="text-italic">koty</b>, lingua materna de Angoche traduzidas em português.
+      <q-card-section class="text text-justify customf">
+       Este aplicativo contém  uma série de palavras em  <b class="text-italic">koty</b>, lingua materna de Angoche, traduzidas em português.
       </q-card-section>
 
-       <q-card-section>
+       <q-card-section class="text text-justify	">
        Ressaltar que as mesmas palavras não foram confirmadas por um especialista em Linguas <b class="text-italic">Bantu</b> ,elas foram coletadas pelo proprio desenvolvedor do aplicativo. Por tanto as palavras podem estar sujeitas a erros de grafia, de fonetica e por ai vai. 
       </q-card-section>
 
-      <q-card-section>
+      <q-card-section class="text-justify	"> 
           Se estiver interressado em colaborar com mais palavras ou traducoes melhoradas por favor <b class="text-italic">feel free</b> em me contactar:
       </q-card-section>
     </q-card>
@@ -26,17 +26,17 @@
     
      
        <q-chip square> 
-        <q-avatar icon="person" color="red" text-color="white" />
+        <q-avatar icon="person" color="light-green-6" text-color="white" />
         Faruque Braimo
       </q-chip>
 
        <q-chip square>
-        <q-avatar icon="email" color="red" text-color="white" />
+        <q-avatar icon="email" color="light-green-6" text-color="white" />
         faruquebraimo@gmail.com
       </q-chip>
 
        <q-chip square>
-        <q-avatar icon="phone" color="red" text-color="white" />
+        <q-avatar icon="phone" color="light-green-6" text-color="white" />
         846771216
       </q-chip>
  
