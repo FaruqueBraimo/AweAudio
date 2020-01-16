@@ -1,11 +1,15 @@
 <template>
-    
+  
+
+<q-page class="q-pa-md   ">
+
+    <q-linear-progress  stripe rounded style="height: 15px" :value="progress2" color="light-green-6" class="q-mt-lg" /> 
+
+<div class="q-pt-lg	" > 
 
 
-<q-page class="q-pa-lg items-center ">
+ <q-card class="my-card  ">
 
-    <q-linear-progress  stripe rounded style="height: 15px" :value="progress2" color="light-green-6" class="q-mb-md" /> 
- <q-card class="my-card items-center ">
       <q-card-section>
         <div class="text-h6">Selecione a traducao correta</div>
       </q-card-section>
@@ -16,7 +20,7 @@
 
       <q-separator />
 
-      <q-card-actions vertical>
+      <q-card-actions vertical class="q-pa-lg">
         <div class="row q-pa-sm">
             <q-btn :ripple="false" :style="cliclicado1" @click="pressionar(1,'eu')" no-caps  push  class="col" style="border-radius: 8px">Eu</q-btn>
             </div>
@@ -29,8 +33,8 @@
 
       </q-card-actions>
     </q-card>
-
-<div class="row justify-center">
+</div>
+<div class="row justify-center absolute-bottom q-pa-md">
       <q-btn
         type="submit"
         :loading="submitting"
@@ -38,6 +42,7 @@
         class="q-mt-md full-width"
         color="light-green-6"
         @click="simulateSubmit"
+        
         
       >
         <template v-slot:loading>
@@ -64,11 +69,23 @@ export default {
       progress2: 0.62,
       press : '',
       resposta : '',
-      soundExito : 'assets/tom/Civilisation.mp3'
+      soundExito : './statics/sound/win.mp3',
+      soundError : './statics/sound/lose.mp3'
+
+
+
+
+      
     }
   },
 
   computed:{
+
+
+
+
+
+
 
         cliclicado1(){
 
@@ -128,16 +145,15 @@ export default {
         if (this.resposta == 'eu'){
                     this.alertaCerto()
         
-        if(this.soundExito) {
         var audio = new Audio(this.soundExito);
         audio.play();
 
-      }
-
-
-        }else{
+      
+      }else{
         this.alertaErrado()
-
+       
+        var audio = new Audio(this.soundError);
+        audio.play();
         }
         // delay simulated, we are done,
         // now restoring submit to its initial state
@@ -146,9 +162,9 @@ export default {
     },
     alertaErrado (val) {
 
-      let tipsErrors = ['Lê o dicionário para aumentar as chances de acertar', 'Eu confio em ti' , 'Ohhh que pena...! ' ]; 
+      let tipsErrors = ['Que azar eieinn...','Escolha com sabedoria,você é capáz ','Você pensou directo?, eu acho que não.','Lê o dicionário para aumentar as chances de acertar', 'Eu confio em ti,não desista' , 'Ohhh que pena, não desanime...! ' , 'Que tal a próxima?', 'Eu acho que da próxima vais acertar ']; 
 
-      var rand = Math.floor(Math.random() * 3);    
+      var rand = Math.floor(Math.random() * tipsErrors.length);    
 
       console.log(rand)
 
@@ -166,9 +182,13 @@ export default {
     },
 
     alertaCerto () {
+
+        let tips = ['Waauu , você é inteligente...','Nice,tou feliz por ti ','Estás com muita sorte hoje, nem?','Viva, a vida é bela quando fazemos as escolhas certas', 'Estás me surpreender, que bom.' , 'Estás num bom caminho, continue assim ' , 'Que lindo...', 'Perfeito ao cubo...é nice acertar, nem ?']; 
+
+      var rand = Math.floor(Math.random() * tips.length);    
       this.$q.dialog({
         title: 'Certa  resposta  <span class="text-h4 q-pl-lg q-pt-xl">  😂  </span>  ',
-        message: 'Manning nice, Contnue assim ,',
+        message: tips[rand],
         position: 'bottom',
         color : 'green',
         style: 'background :#ccffcc ; color: green ; font-size: 16px ' ,
@@ -176,7 +196,10 @@ export default {
         html: true
         
 
-      })
+      },
+      
+      
+      )
     },
   }
   

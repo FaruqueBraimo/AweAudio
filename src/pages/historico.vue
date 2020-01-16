@@ -46,7 +46,7 @@
        
    </transition>
    
-
+<!-- 
     <div class="hello">
   <h4>Bundle of most known networks</h4>
   <vue-goodshare></vue-goodshare>
@@ -70,13 +70,10 @@
    has_square_edges
   ></vue-goodshare-twitter>
 
-</div> 
+</div>  -->
 
 </q-page>
 </template>
-
-
-
 <script>
 import { mapActions, mapState } from 'vuex'
 import { filter } from 'minimatch'
@@ -145,17 +142,9 @@ data () {
             return historico
 }
 
-
            }
-
-
-    
-           
+         
            ,
-  
-  
-
-
   
      methods:{
 ...mapActions('palavra', [
@@ -193,8 +182,6 @@ data () {
             }
 
   }
-
-
 
 }
 </script>

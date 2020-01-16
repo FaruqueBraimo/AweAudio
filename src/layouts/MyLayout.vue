@@ -19,7 +19,11 @@
 
       </q-toolbar>
     </q-header>
-
+<transition
+  appear
+  enter-active-class="animated fadeInLeft"
+  leave-active-class="animated fadeOutLeft"
+>
      <q-drawer
         v-model="drawer"
         show-if-above
@@ -106,6 +110,7 @@
           </div>
         </q-img>
       </q-drawer>
+</transition>
 
       <q-footer elevated class="">
         <div>

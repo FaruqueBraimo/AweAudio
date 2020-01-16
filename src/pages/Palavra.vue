@@ -1,12 +1,12 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-md row items-start">
-      <q-card flat bordered v-for="(palavra,id) in palavras" :key="id" style="width: 500px">
+      <q-card flat bordered   style="width: 500px">
         <q-card-section  >
       
 <div class="row"> 
   
-
+      
        <div class="col-6 text-h6 q-pt-xs">
          <q-card-actions align="left">
 
@@ -16,8 +16,8 @@
       
         <div class="col-6 q-pl-md">
          <q-card-actions align="right">
-         <q-btn flat round color="light-green-6" icon="record_voice_over" />
-        <q-btn flat round :color="palavra.favorito==true ? 'red' : 'black' " icon="favorite" @click="favorito(id)"/>
+         <q-btn flat round color="light-green-6" icon="record_voice_over"  @click="audio(palavra.palavra)"/>
+        <q-btn flat round :color="palavra.favorito==true ? 'red' : 'black' " icon="favorite" @click="favorito()"/>
           </q-card-actions>
               </div>  
               </div>
@@ -71,16 +71,22 @@ export default {
            ]),
            
            
-           cor(){
+           palavraId(){
+          return this.$route.params.id;
+        },
 
+        palavra(){
+           return   this.palavras[this.palavraId]
+        }
 
-           }
            
            
            },
 
   data () {
     return {
+      text: 'oi',
+      voiceSelect: 'pt-BR',
       skeletonAnimations: [
         'wave'
         
@@ -98,18 +104,23 @@ export default {
            ]),
 
 
-      favorito(val){
+  audio(val) {
+          this.$speechTalk(this.voiceSelect, val) 
+          
+          },
+      favorito(){
 
-            if (val){
-             this.saveObject.favorito = !this.palavras[val].favorito 
+            if (this.palavraId){
+             this.saveObject.favorito = !this.palavras[this.palavraId].favorito 
               
             }
           this.updatePalavra ({
-                        id: val,
+                        id: this.palavraId,
                         updates: this.saveObject
                     })
       }
     }
+
 
 
 }

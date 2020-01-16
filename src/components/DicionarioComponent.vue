@@ -24,7 +24,7 @@
                               rounded
                               size="sm"
                               color="light-green-6"
-                              @click="audio()"
+                              @click="audio(i.palavra)"
                           />
                       </q-item-section>
                   </q-item>
@@ -56,6 +56,8 @@ export default {
     return {
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 ,
+        text: 'oi',
+      voiceSelect: 'pt-BR',
       saveObject: {
         his : true,
         dataAcesso : new Date
@@ -72,9 +74,10 @@ export default {
                'addPalavra', 'updatePalavra'
            ]),
 
-      audio() {
-          alert('odjaa')
-      },
+      audio(val) {
+          this.$speechTalk(this.voiceSelect, val) 
+          
+          },
 
       details(id){
         this.$router.push('palavra/' + id)

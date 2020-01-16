@@ -5,8 +5,6 @@
 
 </template>
 
-
-
 <script>
 
 import TabelaPalavras  from '../components/Admin/TabelaPalavras.vue'
