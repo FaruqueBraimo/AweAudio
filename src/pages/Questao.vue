@@ -1,9 +1,32 @@
 <template>
   
 
-<q-page class="q-pa-md   ">
+<q-page class="q-pa-sm  ex">
+  <div class="row q-mt-md q-x-md">
+      <div class="col">
+       <q-btn dense flat icon="close" @click="$router.push('/diario')">
+        </q-btn>
+      </div>
+      <div class="col-9 q-mt-sm ">
+    <q-linear-progress  stripe rounded style="height: 15px" :value="progress2" color="light-green-6"  /> 
+      </div>
+      <div class="col text-center q-mt-xs	">
+        <q-knob
+      :min="0"
+      :max="30"
+      v-model="value1"
+      show-value
+      size="25px"
+      :thickness="0.22"
+      color="grey-2"
+      track-color="light-green-6"
+      font-size = '0.5em'
+      readonly
 
-    <q-linear-progress  stripe rounded style="height: 15px" :value="progress2" color="light-green-6" class="q-mt-lg" /> 
+    />
+      </div>
+    </div>
+
 
 <div class="q-pt-lg	" > 
 
@@ -34,15 +57,15 @@
       </q-card-actions>
     </q-card>
 </div>
-<div class="row justify-center absolute-bottom q-pa-md">
+<div class="row justify-center fixed-bottom q-pa-sm">
       <q-btn
         type="submit"
         :loading="submitting"
         label="Enviar"
         class="q-mt-md full-width"
-        color="light-green-6"
+        :color="color"
         @click="simulateSubmit"
-        
+        :disable=" pressed===false "
         
       >
         <template v-slot:loading>
@@ -59,10 +82,16 @@
 </template>
 
 <script>
+import { date } from 'quasar'
+
 export default {
   data () {
     return {
+      pressed: false,
+      color : 'light-green-1',
       test: '',
+      value1: 30,
+
       selecionado : '',
       submitting: false,
         progress1: 0.4,
@@ -81,19 +110,12 @@ export default {
 
   computed:{
 
-
-
-
-
-
-
         cliclicado1(){
 
         if(this.press == 1){
             return {
-                'color' : '#ffff',
-                'background' : '#559bc9',
-
+                'color' : 'black',
+                'background' : '#A3E4D755',
             }
                 }
         },
@@ -101,8 +123,8 @@ export default {
 
         if(this.press == 2){
             return {
-                'color' : '#ffff',
-                'background' : '#559bc9',
+                'color' : 'black',
+                'background' : '#A3E4D755',
             }
                 }
         },
@@ -110,8 +132,9 @@ export default {
 
         if(this.press == 3){
             return {
-                'color' : '#ffff',
-                'background' : '#559bc9',
+                'color' : 'black',
+                  'background' : '#A3E4D755',
+              
 
             }
                 }
@@ -119,12 +142,38 @@ export default {
   
   
   
-  }
+  },
+
+  mounted () {
+       
+  this.count();
+
+}
+
+
+
+
+
         ,
   methods: {
 
+        count (){
+        var countDownDate = new  Date().getTime()
+        countDownDate = date.addToDate(countDownDate, {seconds: 30 })
+
+	setInterval(() => {
+  
+     var now = new Date().getTime();
+            var distance = countDownDate - now;
+              var seconds = Math.floor((distance % (1000 * 30)) / 1000);
+              this.value1 = seconds;
+  }, 1000)
+
+        },
 
         pressionar(val,resp){
+        this.pressed = true
+        this.color = 'light-green-6'  
         this.press = val
         this.resposta = resp
         this.selecionado = resp;
@@ -205,3 +254,16 @@ export default {
   
 }
 </script>
+
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap');
+
+.ex {
+font-family: 'Alegreya Sans', sans-serif;
+
+}
+
+
+</style>

@@ -13,12 +13,22 @@ const routes = [
       { path: 'diario', component: () => import('pages/PalavaraDoDia.vue') },
       { path: 'questao', component: () => import('pages/Questao.vue') },
 
-      
+    ]
+  },
 
-
+  {
+    path: '/questao',
+    component: () => import('layouts/QuestaoLayout.vue'),
+    children: [
+      { path: 'quiz', component: () => import('pages/Questao.vue') },
+      // { path: 'candidates', component: () => import('pages/admin/Candidates.vue') },
+    
+  
 
     ]
-  }
+
+  },
+
 ]
 
 // Always leave this as last one

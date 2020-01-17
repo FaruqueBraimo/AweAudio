@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="q-pa-md ex">
     <div class="q-gutter-md row items-start">
       <q-card flat bordered   style="width: 500px">
         <q-card-section  >
@@ -8,7 +8,8 @@
   
       
        <div class="col-6 text-h6 q-pt-xs">
-         <q-card-actions align="left">
+         <q-card-actions align="left" class="ex"
+         >
 
            {{palavra.traducao}}
          
@@ -58,6 +59,24 @@
     </div>
   </div>
 </template>
+
+
+
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap');
+
+.ex {
+font-family: 'Alegreya Sans', sans-serif;
+
+
+}
+
+</style>
+
+
+
 
 
 <script>

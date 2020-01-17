@@ -7,11 +7,14 @@
   leave-active-class="animated zoomOut"
 >
 <q-list class="rounded-borders">
-              
+            
               <template  v-for="(i,id) in palavras" >
                   <q-item class="q-mb-sm" clickable v-ripple :key="id" > 
                       <q-item-section @click="details(id)" >
-                          <q-item-label class="text-body1">{{i.traducao}}</q-item-label>
+                          <q-item-label class="text-body1">
+                            
+                            
+                            {{i.traducao}}</q-item-label>
                           <q-item-label caption lines="1"> {{i.dataAcesso | filterDate}}</q-item-label>
                       </q-item-section>
               <q-item-section side>

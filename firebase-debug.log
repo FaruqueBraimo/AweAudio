@@ -1,0 +1,68 @@
+[debug] [2020-01-17T14:58:18.737Z] ----------------------------------------------------------------------
+[debug] [2020-01-17T14:58:18.762Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Faruque Braimo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-01-17T14:58:18.763Z] CLI Version:   7.11.0
+[debug] [2020-01-17T14:58:18.763Z] Platform:      win32
+[debug] [2020-01-17T14:58:18.764Z] Node Version:  v10.16.2
+[debug] [2020-01-17T14:58:18.766Z] Time:          Fri Jan 17 2020 16:58:18 GMT+0200 (Eastern European Standard Time)
+[debug] [2020-01-17T14:58:18.766Z] ----------------------------------------------------------------------
+[debug] [2020-01-17T14:58:18.766Z] 
+[debug] [2020-01-17T14:58:18.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-17T14:58:18.851Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  E:\Tempo Livre\MozBantu
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using ekoty-a427d.
+[debug] [2020-01-17T14:59:03.335Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-17T14:59:03.336Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-17T14:59:04.259Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-17T14:59:04.316Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/ekoty-a427d  
+ 
+[debug] [2020-01-17T14:59:07.467Z] <<< HTTP RESPONSE 200
+[info] 
+=== Firestore Setup
+[debug] [2020-01-17T14:59:07.489Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-17T14:59:07.491Z] > authorizing via signed-in user
+[debug] [2020-01-17T14:59:07.492Z] [iam] checking project ekoty-a427d for permissions ["firebase.projects.get"]
+[debug] [2020-01-17T14:59:07.493Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/ekoty-a427d:testIamPermissions  
+
+[debug] [2020-01-17T14:59:20.206Z] <<< HTTP RESPONSE 200
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2020-01-17T14:59:20.525Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/ekoty-a427d/releases?pageSize=10&pageToken=  
+ 
+[debug] [2020-01-17T14:59:25.473Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-17T14:59:25.475Z] Found ruleset: projects/ekoty-a427d/rulesets/86c5437e-3c74-48d7-bf96-c918e33e1bdb
+[debug] [2020-01-17T14:59:25.476Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/ekoty-a427d/rulesets/86c5437e-3c74-48d7-bf96-c918e33e1bdb  
+ 
+[debug] [2020-01-17T14:59:27.473Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-17T14:59:27.514Z] Error: EISDIR: illegal operation on a directory, open 'E:\Tempo Livre\MozBantu'
+    at Object.openSync (fs.js:443:3)
+    at Object.writeFileSync (fs.js:1194:35)
+    at Config.writeProjectFile (C:\Users\Faruque Braimo\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:179:8)
+    at getRulesFromConsole.then (C:\Users\Faruque Braimo\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\firestore\rules.js:55:31)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+[error] 
+[error] Error: An unexpected error has occurred.

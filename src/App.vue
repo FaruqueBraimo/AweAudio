@@ -23,3 +23,15 @@ export default {
           ]),
 }}
 </script>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed&display=swap');
+
+#q-app {
+font-family: 'Fira Sans Extra Condensed', sans-serif;
+
+}
+
+
+</style>

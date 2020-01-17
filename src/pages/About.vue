@@ -1,12 +1,12 @@
 <template>
-<q-page class="q-pa-sm " v-if="mostrar"> 
+<q-page class=" " v-if="mostrar"> 
    
   <div class="text-body1 " >
         
     <q-card  flat class="my-card  text-weight-light touch "
     square
     >
-      <q-card-section class="text text-justify customf">
+      <q-card-section class=" text-justify customf">
        Este aplicativo contém  uma série de palavras em  <b class="text-italic">koty</b>, lingua materna de Angoche, traduzidas em português.
       </q-card-section>
 
@@ -22,19 +22,25 @@
 
    </div> 
    
-   <div class=" text-weight-light touch q-pa-md" >
+   <div class=" text-weight-light touch q-pl-md  fixed-bottom" >
     
      
-       <q-chip square> 
+
+        <div>
+        <q-chip square> 
         <q-avatar icon="person" color="light-green-6" text-color="white" />
         Faruque Braimo
       </q-chip>
-
-       <q-chip square>
+        </div>
+       
+          <div>
+  <q-chip square>
         <q-avatar icon="email" color="light-green-6" text-color="white" />
         faruquebraimo@gmail.com
       </q-chip>
 
+          </div>
+     
        <q-chip square>
         <q-avatar icon="phone" color="light-green-6" text-color="white" />
         846771216

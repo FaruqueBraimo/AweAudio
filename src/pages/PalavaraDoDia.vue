@@ -51,7 +51,7 @@
   </div>
   <div class="col  q-ma-sm" >
     
-<q-card clickable v-ripple  class="my-card" @click="$router.push('/questao')" style="  -webkit-box-sizing: border-box;
+<q-card clickable v-ripple  class="my-card" @click="$router.push('/questao/quiz')" style="  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 8px
