@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import {dbPalavras, } from '../boot/firebase'
+import {dbconfiguracao, } from '../boot/firebase'
 
 
 const state = {
 
-    palavras: {},
+    configuracoes: {},
     loading: false,
     uploadProgress: -1,
 
@@ -12,14 +12,14 @@ const state = {
 
 const mutations = {
 
-    addPalavra (state, payload) {
-       Vue.set(state.palavras, payload.id, payload.object)
+    addConfiguracao (state, payload) {
+       Vue.set(state.configuracoes, payload.id, payload.object)
     },
     updatePalavra (state, payload) {
-        Object.assign(state.palavras[payload.id], payload.updates)
+        Object.assign(state.configuracoes[payload.id], payload.updates)
     },
-    deletePalavra (state, id) {
-        Vue.delete(state.palavras, id)
+    deleteConfiguracao (state, id) {
+        Vue.delete(state.configuracoes, id)
     },
     loading (state, val) {
         state.loading = val
@@ -31,7 +31,7 @@ const mutations = {
 
 const getters = {
     getPalavraById: (state) => (id) => {
-        return state.palavras[id]
+        return state.configuracoes [id]
     }
 }
 
@@ -39,7 +39,7 @@ const actions = {
 
     listenPalavraRealTimeChanges ({state, commit}, hasInternetConection) {
 
-        dbPalavras.onSnapshot(function(snapshot) {
+        dbconfiguracao.onSnapshot(function(snapshot) {
 
                 snapshot.docChanges().forEach(function(change) {
 
@@ -68,7 +68,7 @@ const actions = {
         commit('loading', true)
         payload.createdAt = new Date();
         payload.updatedAt = new Date();
-        dbPalavras.add(payload)
+        dbconfiguracao.add(payload)
             .then(function(docRef) {
                 commit('loading', false)
                 // showSuccessMessage('Cargo agendada com sucesso!')
@@ -82,7 +82,7 @@ const actions = {
     updatePalavra({commit}, payload) {
         commit('loading', true)
         payload.updatedAt = new Date();
-        dbPalavras.doc(payload.id).update(payload.updates)
+        dbconfiguracao.doc(payload.id).update(payload.updates)
             .then(function(docRef) {
                 commit('loading', false)
              console.log('Cargo actualizada com sucesso!')
@@ -96,7 +96,7 @@ const actions = {
 
     deletePalavra ({commit}, id) {
         commit('loading', true)
-        dbPalavras.doc(id).delete()
+        dbconfiguracao.doc(id).delete()
             .then(function(docRef) {
                 commit('loading', false)
                 // showSuccessMessage('Cargo deletada com sucesso!')

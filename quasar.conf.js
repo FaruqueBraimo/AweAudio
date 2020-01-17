@@ -8,7 +8,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
        
-      'firebase'
+      'firebase', 'speech'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -47,7 +47,7 @@ module.exports = function (ctx) {
       directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [      'Dialog'    ]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -76,9 +76,12 @@ module.exports = function (ctx) {
       open: true // opens browser window automatically
     },
 
-    // animations: 'all', // --- includes all animations
+      animations: 'all', // --- includes all animations
     // https://quasar.dev/options/animations
-    animations: [],
+  //   animations: [
+  //     'bounceInLeft',
+  // 'bounceOutRight'
+  //   ],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {

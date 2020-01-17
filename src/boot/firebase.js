@@ -5,13 +5,14 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAk9AbSDJuroLyqr1qQ4Gp0fA5ZehgvB-o",
-    authDomain: "norb-dd8de.firebaseapp.com",
-    databaseURL: "https://norb-dd8de.firebaseio.com",
-    projectId: "norb-dd8de",
-    storageBucket: "norb-dd8de.appspot.com",
-    messagingSenderId: "929249220341",
-    appId: "1:929249220341:web:3832c97972359777cad7bc"
+    apiKey: "AIzaSyDe29ALkkuugUrjJJo7n8oXY0s4hILB0Fo",
+    authDomain: "ekoty-a427d.firebaseapp.com",
+    databaseURL: "https://ekoty-a427d.firebaseio.com",
+    projectId: "ekoty-a427d",
+    storageBucket: "ekoty-a427d.appspot.com",
+    messagingSenderId: "894719711666",
+    appId: "1:894719711666:web:cf3a31b88650734348ecab",
+    measurementId: "G-LNLHGVSE9D"
 };
 
 let firebaseApp = firebase.initializeApp(firebaseConfig)
@@ -23,9 +24,11 @@ export const firebaseAuth = firebaseApp.auth();
 // ==== Firebase firestore db
 export const db = firebaseApp.firestore();
 
-db.enablePersistence() //activando o cacheamento de dados para o funcionamento offline
+// db.enablePersistence() //activando o cacheamento de dados para o funcionamento offline
 
 export const dbPalavras = db.collection("palavras");
+export const dbconfiguracao = db.collection("configuracao");
+
 
 
 
