@@ -41,7 +41,7 @@
           <q-avatar  size="65px"  color="blue-grey" text-color="white" icon="emoji_people" />
       </q-card-section>
       <q-card-section class="text-center	">
-         Saudacoes
+         Saudações
       </q-card-section>
         <q-card-section class="text-center	">
     <q-linear-progress :value="progress"  color="blue-grey" />
@@ -133,7 +133,7 @@
   </div>
   <div class="col q-ma-sm" >
     
-<q-card clickable v-ripple class="my-card"  style="  -webkit-box-sizing: border-box;
+<q-card clickable v-ripple class="my-card"  disabled style="  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 8px
@@ -160,7 +160,7 @@
           <q-avatar  size="65px"  color="teal" text-color="white" icon="wc" />
       </q-card-section>
       <q-card-section class="text-center	">
-         Familia
+         Família
       </q-card-section>
         <q-card-section class="text-center	">
     <q-linear-progress :value="progress "  color="teal" />
@@ -216,7 +216,7 @@
   </div>
   <div class="col q-ma-sm" >
     
-<q-card clickable v-ripple class="my-card"  style="  -webkit-box-sizing: border-box;
+<q-card clickable v-ripple class="my-card"  disabled style="  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 8px
@@ -296,7 +296,7 @@
   </div>
   <div class="col q-ma-sm" >
     
-<q-card clickable v-ripple class="my-card"  style="  -webkit-box-sizing: border-box;
+<q-card clickable v-ripple class="my-card" disabled style="  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 8px
@@ -323,7 +323,7 @@
           <q-avatar  size="65px"  color="brown-6" text-color="white" icon="directions" />
       </q-card-section>
       <q-card-section class="text-center	">
-         direccoes
+         Direcções
       </q-card-section>
         <q-card-section class="text-center	">
     <q-linear-progress :value="progress "  color="brown-6" />
@@ -376,7 +376,7 @@
   </div>
   <div class="col q-ma-sm" >
     
-<q-card clickable v-ripple class="my-card"  style="  -webkit-box-sizing: border-box;
+<q-card clickable v-ripple class="my-card"  disabled style="  -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
           border-radius: 8px
@@ -403,7 +403,7 @@
           <q-avatar  size="65px"  color="warning" text-color="white" icon="looks_one" />
       </q-card-section>
       <q-card-section class="text-center	">
-         Numeros
+         Números
       </q-card-section>
         <q-card-section class="text-center	">
     <q-linear-progress :value="progress "  color="warning" />

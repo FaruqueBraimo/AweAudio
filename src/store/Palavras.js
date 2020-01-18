@@ -39,7 +39,7 @@ const actions = {
 
     listenPalavraRealTimeChanges ({state, commit}, hasInternetConection) {
 
-        dbPalavras.onSnapshot(function(snapshot) {
+        dbPalavras.onSnapshot(  { includeMetadataChanges: true }, function(snapshot) {
 
                 snapshot.docChanges().forEach(function(change) {
 
@@ -60,6 +60,8 @@ const actions = {
                         commit('deletePalavra', change.doc.id)
 
                     }
+                    var source = snapshot.metadata.fromCache ? "local cache" : "server";
+          console.log( source);
                 });
             });
     },
