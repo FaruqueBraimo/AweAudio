@@ -2,6 +2,7 @@
   
 
 <q-page class="q-pa-sm  ex">
+
   <div class="row q-mt-md q-x-md">
       <div class="col">
        <q-btn dense flat icon="close" @click="$router.push('/diario')">
@@ -31,29 +32,28 @@
 <div class="q-pt-lg	" > 
 
 
- <q-card class="my-card  ">
+ <q-card class="my-card  " v-for="(questao,id) in questoes" :key="id">
 
       <q-card-section>
-        <div class="text-h6">Selecione a traducao correta</div>
+        <div class="text-h6">Selecione a traducao correta </div>
       </q-card-section>
 
-        <q-card-section>
-            <div class="text-subtitle2">Em  koty  <b > Miyo </b> é : {{selecionado}}  </div>
+        <q-card-section >
+            <div class="text-subtitle2">Em  koty  <b > {{questao.questao}} </b> é : {{selecionado}}  </div>
       </q-card-section>
 
       <q-separator />
 
       <q-card-actions vertical class="q-pa-lg">
         <div class="row q-pa-sm">
-            <q-btn :ripple="false" :style="cliclicado1" @click="pressionar(1,'eu')" no-caps  push  class="col" style="border-radius: 8px">Eu</q-btn>
+            <q-btn :ripple="false" :style="cliclicado1" @click="pressionar(1,questao.resposta, questao.id)" no-caps  push  class="col" style="border-radius: 8px">{{questao.resposta}}</q-btn>
             </div>
          <div class="row q-pa-sm">
-            <q-btn :ripple="false"  :style="cliclicado2"  no-caps  push  class="col"  @click="pressionar(2,'aquele')" style="border-radius: 8px">Aquele</q-btn>
+            <q-btn :ripple="false"  :style="cliclicado2"  no-caps  push  class="col"  @click="pressionar(2,questao.possivelResposta1, questao.id)" style="border-radius: 8px">{{questao.possivelResposta1}}</q-btn>
             </div>
          <div class="row q-pa-sm">
-            <q-btn :ripple="false" :style="cliclicado3" no-caps  push  class="col"   @click="pressionar(3,'voce')" style="border-radius: 8px">Voce</q-btn>
+            <q-btn :ripple="false" :style="cliclicado3" no-caps  push  class="col"   @click="pressionar(3,questao.possivelResposta2,questao.id)" style="border-radius: 8px">{{questao.possivelResposta2}}</q-btn>
             </div>
-
       </q-card-actions>
     </q-card>
 </div>
@@ -62,10 +62,10 @@
         type="submit"
         :loading="submitting"
         label="Enviar"
-        class="q-mt-md full-width"
+        class="q-mt-md full-width " 
         :color="color"
         @click="simulateSubmit"
-        :disable=" pressed===false "
+        :disable="pressed===false"
         
       >
         <template v-slot:loading>
@@ -83,6 +83,7 @@
 
 <script>
 import { date } from 'quasar'
+let timeCounter ;
 
 export default {
   data () {
@@ -91,16 +92,26 @@ export default {
       color : 'light-green-1',
       test: '',
       value1: 30,
-
+      next: 1,
+      timeCounter : 0,
       selecionado : '',
       submitting: false,
-        progress1: 0.4,
-      progress2: 0.62,
+     progress1: 0.4,
+      progress2: 0.1,
       press : '',
       resposta : '',
       soundExito : './statics/sound/win.mp3',
-      soundError : './statics/sound/lose.mp3'
+      soundError : './statics/sound/lose.mp3',
+      id : '',
+      questao: [
+       {questao : 'Miyo',  possivelResposta1 : 'Aquele' , possivelResposta2: 'Tu',  resposta : 'Eu', feito: false} ,  
+       {questao : 'Odjaa',  possivelResposta1 : 'Andar' , possivelResposta2: 'Olhar', resposta : 'Comer' ,feito: false} ,  
+       {questao : 'Weyoh',  possivelResposta1 : 'Othó' , possivelResposta2: 'Porta', resposta : 'Tu', feito: false} ,  
+       {questao : 'Wethetha',  possivelResposta1 : 'Escrever',possivelResposta2: 'Livro',resposta : 'Andar' , feito: false} ,  
+       {questao : 'Ossahu',  possivelResposta1 : 'Levar' , possivelResposta2: 'Garrafa', resposta : 'Esquecer', feito: false} ,  
+       {questao : 'Othulé',  possivelResposta1 : 'Copiar' , possivelResposta2: 'Lembar', resposta : 'Aquele', feito: false} ,  
 
+      ]
 
 
 
@@ -109,6 +120,34 @@ export default {
   },
 
   computed:{
+
+
+        questoes(){
+       let arrs = [];
+
+
+          let   rand = Math.floor(Math.random() * this.questao.length);
+
+                if((this.questao[rand].feito) === false){
+                    arrs.push({
+                        questao: this.questao[rand].questao,
+                        possivelResposta1: this.questao[rand].possivelResposta1,
+                        possivelResposta2 : this.questao[rand].possivelResposta2,
+                        resposta: this.questao[rand].resposta,
+                        id : rand
+                    })
+                
+              if (this.next!=1){
+                     
+
+                     return arrs 
+
+              } }   
+                      
+                return arrs 
+
+        }
+          ,
 
         cliclicado1(){
 
@@ -145,41 +184,107 @@ export default {
   },
 
   mounted () {
+    
        
   this.count();
+
+},
+
+updated(){
+  if(this.value1 == 1){
+    this.gameOver()
+  }
+  
+}
+
+
+,
+
+watch: {
+
+next (val){
+
+  if (val!=1)  {
+     
+     this.count()      
+  }
 
 }
 
 
-
+}
 
 
         ,
   methods: {
 
         count (){
+              
         var countDownDate = new  Date().getTime()
-        countDownDate = date.addToDate(countDownDate, {seconds: 30 })
+        countDownDate = date.addToDate(countDownDate, {seconds: 32 })
 
-	setInterval(() => {
-  
-     var now = new Date().getTime();
-            var distance = countDownDate - now;
-              var seconds = Math.floor((distance % (1000 * 30)) / 1000);
-              this.value1 = seconds;
-  }, 1000)
+            
+          this.timeCounter = setInterval(() => {
+            
+              var now = new Date().getTime();
+                      var distance = countDownDate - now;
+                        var seconds =   Math.floor((distance % (1000 * 30)) / 1000);
+                        let newSecond = Math.floor((distance % (1000 * 30)) / 1000);
+                         this.value1 = seconds;
+
+                        if(this.next!=1){
+                         this.value1 = newSecond   
+                        }
+            }, 1000) 
+
+             
 
         },
 
-        pressionar(val,resp){
-        this.pressed = true
-        this.color = 'light-green-6'  
-        this.press = val
-        this.resposta = resp
-        this.selecionado = resp;
-        console.log( this.resposta)
+
+
+
+
+
+        pressionar(val,resp,idSelected){
+
+                  this.pressed = true
+                  this.color = 'light-green-6'  
+                  this.press = val
+                  this.resposta = resp
+                  this.selecionado = resp;
+                  this.id = idSelected;
+                  console.log( this.resposta)
         }
     ,
+
+
+
+    gameOver(){
+
+      const dialog = this.$q.dialog({
+        title: 'Tempo excedido 🕛',
+        message: 'Até a próxima   <span class="text-h6 q-pt-sm"> 👋 </span>',
+        ok : 'Ok',
+        html : true
+        
+      }).onOk(() => {
+         this.$router.push('/diario')
+        // console.log('OK')
+      }).onDismiss(() => {
+        clearTimeout(timer)
+        // console.log('I am triggered on both OK and Cancel')
+      })
+
+      const timer = setTimeout(() => {
+
+        dialog.hide()
+        this.$router.push('/diario')
+      }, 5000)
+    
+
+    },
+
 
     simulateSubmit () {
       this.submitting = true
@@ -189,13 +294,17 @@ export default {
       // Boolean to false to restore the
       // initial state.
       setTimeout(() => {
-        console.log( this.resposta)
+      
+        clearInterval(this.timeCounter)
+        if (this.questao[this.id].resposta == this.resposta) {
+        this.alertaCerto()
+         this.pressed = false
+        this.progress2 =  this.progress2+0.1;
 
-        if (this.resposta == 'eu'){
-                    this.alertaCerto()
         
         var audio = new Audio(this.soundExito);
         audio.play();
+      
 
       
       }else{
@@ -227,8 +336,18 @@ export default {
         html: true
 
 
+      }).onOk(() => {
+          this.pressed = false
+           this.color = 'light-green-1'  
+         this.press = 0
+          this.selecionado = ''
+
+           this.next++
       })
     },
+
+/// color : #48D7FF    #78C800 #DDF4FF
+
 
     alertaCerto () {
 
@@ -239,16 +358,21 @@ export default {
         title: 'Certa  resposta  <span class="text-h4 q-pl-lg q-pt-xl">  😂  </span>  ',
         message: tips[rand],
         position: 'bottom',
-        color : 'green',
+        color : '#78C800',
         style: 'background :#ccffcc ; color: green ; font-size: 16px ' ,
         ok : 'Continuar',
         html: true
-        
-
-      },
-      
-      
+      },  
       )
+      .onOk(() => {
+        this.next++
+        this.selecionado = ''
+        this.color = 'light-green-1'   
+        this.pressed = false
+        this.press = 0
+
+
+      })
     },
   }
   

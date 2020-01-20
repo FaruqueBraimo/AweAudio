@@ -1,210 +1,176 @@
-
-
 <template>
-    
 
-<q-page class="q-pa-sm">
+<q-page>
 
-<div class="q-py-sm q-px-md text-h6">
-  Gategorias Populares
-</div>
+   <transition
+  appear
+  enter-active-class="animated pulse"
+  leave-active-class="animated zoomOut"
+  v-if="texto.length==0"
+>
+<q-list class="rounded-borders">
+            
+              <template  v-for="(i,id) in palavras" >
+                  <q-item class="q-mb-sm" clickable v-ripple :key="id" > 
+                      <q-item-section @click="details(id)" >
+                          <q-item-label class="text-body1">
+                            
+                            
+                            {{i.traducao}}</q-item-label>
+                          <q-item-label caption lines="1" v-if="i.dataAcesso"> {{i.dataAcesso | filterDate}}</q-item-label>
+                      </q-item-section>
+              <q-item-section side>
+                          <q-btn
+                             
+                              outline
+                              no-caps
+                              flat
+                              icon="record_voice_over"
+                              rounded
+                              size="sm"
+                              color="light-green-6"
+                              @click="audio(i.palavra)"
+                          />
+                      </q-item-section>
+                  </q-item>
+                  
+                  <q-separator :key="i.traducao"/>    
 
- <div>
+                 
+              </template>
 
-<div class="row">
-  <div class="col  q-ma-sm " >
-
- <q-card clickable v-ripple class="my-card" style="  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          border-radius: 8px
-          
-          ">
-
-   <div class="row">
-     <div class="col-6 items-start">
-      <q-item-section side>
-            <q-btn icon="star" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-      <div class="col-6 text-right q-pl-sm	">
-      <q-item-section class="text-right q-pl-lg">
-            <q-btn icon="more_horiz" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-   </div>
-     
-
-      <q-card-section class="text-center	">
-          <q-avatar  size="65px"  color="blue-grey" text-color="white" icon="emoji_people" />
-      </q-card-section>
-      <q-card-section class="text-center	">
-         Saudacoes
-      </q-card-section>
-        <q-card-section class="text-center	">
-    <q-linear-progress :value="progress"  color="green-7" />
-      </q-card-section>
-    </q-card>
-
-  </div>
-  <div class="col  q-ma-sm" >
-    
-<q-card clickable v-ripple class="my-card" style="  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          border-radius: 8px
-          
-          ">
-
-   <div class="row">
-     <div class="col-6 items-start">
-      <q-item-section side>
-            <q-btn icon="star" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-      <div class="col-6 text-right q-pl-sm	">
-      <q-item-section class="text-right q-pl-lg">
-            <q-btn icon="more_horiz" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-   </div>
-     
-
-      <q-card-section class="text-center	">
-          <q-avatar  size="65px"  color="light-blue" text-color="white" icon="local_parking" />
-      </q-card-section>
-      <q-card-section class="text-center	">
-         Pronomes
-      </q-card-section>
-
-        <q-card-section class="text-center	">
-    <q-linear-progress :value="progress"  color="green-7"  />
-      </q-card-section>
-    </q-card>
-  </div>
-
-</div>
-
- 
-<div class="row">
-  <div class="col  q-ma-sm" >
-    
- <q-card clickable v-ripple class="my-card" style="  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          border-radius: 8px;
-          shadow-2	;
-          
-          ">
-
-   <div class="row">
-     <div class="col-6 items-start">
-      <q-item-section side>
-            <q-btn icon="star" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-      <div class="col-6 text-right q-pl-sm	">
-      <q-item-section class="text-right q-pl-lg">
-            <q-btn icon="more_horiz" flat round color="grey" />
-        </q-item-section>
-
-        
-     </div>
-
-   </div>
-     
-
-      <q-card-section class="text-center	">
-          <q-avatar  size="65px"  color="deep-orange" text-color="white" icon="local_dining" />
-      </q-card-section>
-      <q-card-section class="text-center	">
-         Comida
-      </q-card-section>
-
-      <q-card-section class="text-center	">
-    <q-linear-progress :value="progress"  color="green-7" />
-      </q-card-section>
-    </q-card>
-  </div>
-  <div class="col q-ma-sm" >
-    
-<q-card clickable v-ripple class="my-card"  style="  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          border-radius: 8px
-          
-          ">
-
-   <div class="row">
-     <div class="col-6 items-start">
-      <q-item-section side>
-            <q-btn icon="star" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-      <div class="col-6 text-right q-pl-sm	">
-      <q-item-section class="text-right q-pl-lg">
-            <q-btn icon="more_horiz" flat round color="grey" />
-        </q-item-section>
-     </div>
-
-   </div>
-     
-
-      <q-card-section class="text-center	">
-          <q-avatar  size="65px"  color="teal" text-color="white" icon="wc" />
-      </q-card-section>
-      <q-card-section class="text-center	">
-         Familia
-      </q-card-section>
-        <q-card-section class="text-center	">
-    <q-linear-progress :value="progress "  color="green-7" />
-      </q-card-section>
-    </q-card>
-  </div>
-
-</div>
+          </q-list> 
+          </transition>
 
 
- </div>
+ <transition
+  appear
+  enter-active-class="animated pulse"
+  leave-active-class="animated zoomOut"
+  v-if="texto.length!=0"
+>
+<q-list class="rounded-borders">
+            
+              <template  >
+                  <q-item class="q-mb-sm" clickable v-ripple  > 
+                      <q-item-section @click="details(palavrasFiltradas)" >
+                          <q-item-label class="text-body1">
+                            
+                            
+                            {{palavrasFiltradas.traducao}}</q-item-label>
+                          <q-item-label caption lines="1" v-if="palavrasFiltradas.dataAcesso"> {{palavrasFiltradas.dataAcesso | filterDate}}</q-item-label>
+                      </q-item-section>
+              <q-item-section side>
+                          <q-btn
+                             
+                              outline
+                              no-caps
+                              flat
+                              icon="record_voice_over"
+                              rounded
+                              size="sm"
+                              color="light-green-6"
+                              @click="audio(palavrasFiltradas.palavra)"
+                          />
+                      </q-item-section>
+                  </q-item>
+                  
+                  <q-separator />    
 
+                 
+              </template>
 
+          </q-list> 
+          </transition>
 
+  
 </q-page>
-
-
-
-
-
-
-
 </template>
 
 
+
 <script>
+import { mapActions, mapState } from 'vuex'
+  import { date } from 'quasar'
+
 export default {
+props : ['texto'],
+
+  computed: {
+           ...mapState ('palavra', [
+               'palavras'
+           ]),
+
+              palavrasFiltradas(){
+                 
+                 let favorito = {}
+
+            Object.keys(this.palavras).forEach(key => {
+              
+                let fav = this.palavras[key].traducao
+              
+                  if (this.texto) {
+
+                  
+                   if(fav == this.texto) {
+
+                      favorito = this.palavras[key]
+                   }
+                  }
+                
+            })
+            return favorito
+              }
+       },
+
+
+    
+
+
   data () {
     return {
-      progress: 0.4,
+      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+,
+        text: 'oi',
+      voiceSelect: 'pt-BR',
+      saveObject: {
+        his : true,
+        dataAcesso : new Date
 
-          grupos :[
-          {titulo: 'Saudacoes' ,icon : 'wc'} , 
-          {titulo: 'Pronomes' ,icon : 'wc'}  ,
-          {titulo: 'Comida' ,icon : 'wc'}  ,
-          {titulo: 'Familia' ,icon : 'wc'}  ,
-
-
-
-
-          ]
-
+        } 
+    
     }
-  },
-  
-}
+    
+  }
+
+  ,
+     methods:{
+...mapActions('palavra', [
+               'addPalavra', 'updatePalavra'
+           ]),
+
+      audio(val) {
+          this.$speechTalk(this.voiceSelect, val) 
+          
+          },
+
+      details(id){
+        this.$router.push('palavra/' + id)
+                 this.updatePalavra ({
+                        id: id,
+                        updates: this.saveObject
+                    })
+            }
+ 
+  }
+  ,
+   filters: {
+            filterDate (val) {
+                let timeStamp = val.seconds * 1000;
+                let data  =  new Date(timeStamp);
+                let formattedString = date.formatDate(data, 'DD - MM - YYYY')
+                return formattedString  ? 'Acessado aos: ' + formattedString : 'Nunca Acessado'
+            }
+}}
+
 </script>

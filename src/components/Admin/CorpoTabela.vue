@@ -42,34 +42,7 @@
         </td>
 
 
-        <q-dialog
-            v-model="showCV"
-            maximized
-            transition-show="slide-up"
-            transition-hide="slide-down"
-        >
-            <q-card class="full-width">
-                <q-bar>
-                    <q-space />
-                    <q-btn dense flat icon="close" v-close-popup>
-                        <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
-                    </q-btn>
-                </q-bar>
-
-                <q-card-section>
-                    <div class="text-h3 text-center"></div>
-                </q-card-section>
-
-                <q-card-section>
-                    <pdf :src="candidate.cvUrl" style="width: 100%"></pdf>
-                </q-card-section>
-
-                <q-card-actions align="right">
-                    <q-btn flat label="Fechar" color="primary" v-close-popup />
-                </q-card-actions>
-            </q-card>
-        </q-dialog>
-
+        
     </tr>
 </template>
 

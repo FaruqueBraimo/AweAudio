@@ -1,116 +1,60 @@
 import Vue from 'vue'
 import {dbconfiguracao, } from '../boot/firebase'
-
+import { LocalStorage, SessionStorage } from 'quasar'
+import { Dark } from 'quasar'
 
 const state = {
 
     configuracoes: {},
     loading: false,
     uploadProgress: -1,
+    dark: ''
 
 }
 
 const mutations = {
 
-    addConfiguracao (state, payload) {
-       Vue.set(state.configuracoes, payload.id, payload.object)
-    },
-    updatePalavra (state, payload) {
-        Object.assign(state.configuracoes[payload.id], payload.updates)
-    },
-    deleteConfiguracao (state, id) {
-        Vue.delete(state.configuracoes, id)
-    },
-    loading (state, val) {
-        state.loading = val
-    },
-    uploadProgress (state, val) {
-        state.uploadProgress = val
-    }
+    
 }
 
 const getters = {
-    getPalavraById: (state) => (id) => {
-        return state.configuracoes [id]
+   darkStatus(){
+    if( LocalStorage.has('key') ) {
+        let value = LocalStorage.getItem('key')
+        if(value === true){
+            Dark.set(true)
+        }
+      }
+
+   }
+            ,
+    darkLabel(){
+        
+
     }
+
+
 }
 
 const actions = {
 
-    listenPalavraRealTimeChanges ({state, commit}, hasInternetConection) {
+   addDark({commit}) {
+        commit('loading', true)                  
+        Dark.set(true)
+          LocalStorage.set('key', true)
+          console.log( "Todos" , LocalStorage.getItem('key'))
 
-        dbconfiguracao.onSnapshot(function(snapshot) {
-
-                snapshot.docChanges().forEach(function(change) {
-
-                    if (change.type === "added") {
-                        commit('addPalavra', {
-                            id: change.doc.id,
-                            object: change.doc.data()
-                        })
-                    }
-                    if (change.type === "modified") {
-                        commit('updatePalavra', {
-                            id: change.doc.id,
-                            updates: change.doc.data()
-                        })
-                    }
-                    if (change.type === "removed") {
-
-                        commit('deletePalavra', change.doc.id)
-
-                    }
-                });
-            });
+     
     },
-
-    addPalavra ({commit}, payload) {
+    
+    updateDark({commit}, payload) {
         commit('loading', true)
-        payload.createdAt = new Date();
-        payload.updatedAt = new Date();
-        dbconfiguracao.add(payload)
-            .then(function(docRef) {
-                commit('loading', false)
-                // showSuccessMessage('Cargo agendada com sucesso!')
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-                commit('loading', false)
-                // showErrorMessage(error.message)
-            });
-    },
-    updatePalavra({commit}, payload) {
-        commit('loading', true)
-        payload.updatedAt = new Date();
-        dbconfiguracao.doc(payload.id).update(payload.updates)
-            .then(function(docRef) {
-                commit('loading', false)
-             console.log('Cargo actualizada com sucesso!')
-            })
-            .catch(function(error) {
-                console.error("Error adding document: ", error);
-                commit('loading', false)
-                showErrorMessage(error.message)
-            });
+        Dark.set(false)
+        LocalStorage.set('key', false)
+       
     },
 
-    deletePalavra ({commit}, id) {
-        commit('loading', true)
-        dbconfiguracao.doc(id).delete()
-            .then(function(docRef) {
-                commit('loading', false)
-                // showSuccessMessage('Cargo deletada com sucesso!')
-            })
-            .catch(function(error) {
-                console.error("Error removing document: ", error);
-                commit('loading', false)
-                // showErrorMessage(error.message)
-            });
-
-
-
-    },
-
+    
 
 }
 

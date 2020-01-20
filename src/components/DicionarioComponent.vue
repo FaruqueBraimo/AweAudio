@@ -1,4 +1,4 @@
-<template>
+<template >
 
 <q-page>
    <transition
@@ -6,16 +6,16 @@
   enter-active-class="animated pulse"
   leave-active-class="animated zoomOut"
 >
-<q-list class="rounded-borders">
+<q-list class="rounded-borders"    >
             
-              <template  v-for="(i,id) in palavras" >
+              <template  v-for="(i,id) in searchPalavras(palavras)" >
                   <q-item class="q-mb-sm" clickable v-ripple :key="id" > 
                       <q-item-section @click="details(id)" >
                           <q-item-label class="text-body1">
                             
                             
                             {{i.traducao}}</q-item-label>
-                          <q-item-label caption lines="1"> {{i.dataAcesso | filterDate}}</q-item-label>
+                          <q-item-label caption lines="1" v-if="i.dataAcesso"> {{i.dataAcesso | filterDate}}</q-item-label>
                       </q-item-section>
               <q-item-section side>
                           <q-btn
@@ -47,14 +47,19 @@
 
 
 <script>
-import { mapActions, mapState } from 'vuex'
+    import { mapActions, mapGetters , mapState} from 'vuex'
   import { date } from 'quasar'
 
 export default {
   computed: {
            ...mapState ('palavra', [
                'palavras'
-           ]),},
+           ]),
+                   ...mapGetters ('palavra',['searchPalavras'])
+
+           
+           
+           },
   data () {
     return {
       lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
@@ -77,6 +82,13 @@ export default {
                'addPalavra', 'updatePalavra'
            ]),
 
+            handleSwipe ({ evt, ...info }) {
+      this.info = info
+
+      // native Javascript event
+      // console.log(evt)
+    },
+
       audio(val) {
           this.$speechTalk(this.voiceSelect, val) 
           
@@ -93,8 +105,9 @@ export default {
   }
   ,
    filters: {
+     
             filterDate (val) {
-                let timeStamp = val.seconds * 100;
+                let timeStamp = val.seconds * 1000;
                 let data  =  new Date(timeStamp);
                 let formattedString = date.formatDate(data, 'DD - MM - YYYY')
                 return formattedString  ? 'Acessado aos: ' + formattedString : 'Nunca Acessado'

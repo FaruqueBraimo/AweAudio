@@ -11,11 +11,11 @@
       </q-card-section>
 
        <q-card-section class="text text-justify	">
-       Ressaltar que as mesmas palavras não foram confirmadas por um especialista em Linguas <b class="text-italic">Bantu</b> ,elas foram coletadas pelo proprio desenvolvedor do aplicativo. Por tanto as palavras podem estar sujeitas a erros de grafia, de fonetica e por ai vai. 
+       Ressaltar que as mesmas palavras não foram confirmadas por um especialista em Linguas <b class="text-italic">Bantu</b> ,elas foram coletadas pelo próprio desenvolvedor do aplicativo. Por tanto as palavras podem estar sujeitas a erros de grafia, de fonética e por aí vai. 
       </q-card-section>
 
       <q-card-section class="text-justify	"> 
-          Se estiver interressado em colaborar com mais palavras ou traducoes melhoradas por favor <b class="text-italic">feel free</b> em me contactar:
+          Se estiver interressado em colaborar com mais palavras ou traduções melhoradas por favor <b class="text-italic">feel free</b> em me contactar:
       </q-card-section>
     </q-card>
     

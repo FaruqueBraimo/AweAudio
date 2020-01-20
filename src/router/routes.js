@@ -22,7 +22,8 @@ const routes = [
     children: [
       { path: 'quiz', component: () => import('pages/Questao.vue') },
       // { path: 'candidates', component: () => import('pages/admin/Candidates.vue') },
-    
+      { path: 'colaborate', component: () => import('pages/Admin/Admin.vue') },
+
   
 
     ]
