@@ -28,10 +28,19 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions,mapGetters } from 'vuex'
 export default {
   name: 'App',
+
+   computed: {
+  
+                   ...mapGetters ('config',['darkStatus'])
+
+           },
   created () {
+
+        this.darkStatus
+
 
         this.listenPalavraRealTimeChanges ()
         
@@ -44,6 +53,8 @@ export default {
      ...mapActions('palavra', [
               'listenPalavraRealTimeChanges',
           ]),
+
+
 }}
 </script>
 

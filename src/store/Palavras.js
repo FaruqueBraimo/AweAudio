@@ -7,6 +7,7 @@ const state = {
     palavras: {},
     loading: false,
     uploadProgress: -1,
+    palavraSearchKey:  ''
 
 }
 
@@ -26,20 +27,36 @@ const mutations = {
     },
     uploadProgress (state, val) {
         state.uploadProgress = val
-    }
+    },
+    setPalavraSearchKey(state, val) {
+        state.palavraSearchKey = val
+    },
 }
 
 const getters = {
     getPalavraById: (state) => (id) => {
         return state.palavras[id]
     }
+        ,
+    searchPalavras: (state) => (palavras) => {
+        let object = {}
+
+        Object.keys(palavras).forEach(key => {
+            let palavra = palavras[key]
+            if (palavra.traducao.toLowerCase().includes(state.palavraSearchKey.toLowerCase())) {
+                object[key] = palavra
+            }
+        })
+        return object
+}
+
 }
 
 const actions = {
 
     listenPalavraRealTimeChanges ({state, commit}, hasInternetConection) {
 
-        dbPalavras.onSnapshot(  { includeMetadataChanges: true }, function(snapshot) {
+        dbPalavras.orderBy("traducao").onSnapshot(  { includeMetadataChanges: true }, function(snapshot) {
 
                 snapshot.docChanges().forEach(function(change) {
 
@@ -112,7 +129,9 @@ const actions = {
 
 
     },
-
+    setPalavraSearchKey ({commit}, text) {
+        commit('setPalavraSearchKey', text)
+    },
 
 }
 

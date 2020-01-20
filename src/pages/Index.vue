@@ -1,9 +1,20 @@
 <template>
 
-<q-page v-if="mostrar" >
+<q-page v-if="mostrar"  >
 
-  <pesquisa/>
-  <dicionario-component/>
+  <pesquisa
+  @texto="texto=$event"
+
+   :object="{
+              canShowAddBtn: true,
+              type: 'palavra'
+            }"
+  />
+
+  <dicionario-component
+  :texto="texto"
+  
+  />
 
 
  <q-footer elevated class="">
@@ -66,7 +77,8 @@ export default {
 
   data () {
     return {
-      mostrar : false
+      mostrar : false,
+      texto : ''
     }
   
   },
@@ -76,6 +88,17 @@ export default {
           setTimeout (() => {
               this.mostrar = true
           }, 500)
+
+      }
+      ,
+       methods: {
+    handleSwipe ({ evt, ...info }) {
+      this.info = info
+
+      // native Javascript event
+      // console.log(evt)
+    }
+  
 
       }
 }

@@ -44,10 +44,11 @@ module.exports = function (ctx) {
       all: 'auto',
 
       components: [],
-      directives: [],
+      directives: ['TouchSwipe'],
 
       // Quasar plugins
-      plugins: [      'Dialog'    ]
+      plugins: [      'Dialog','LocalStorage',
+      'SessionStorage'    ]
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie

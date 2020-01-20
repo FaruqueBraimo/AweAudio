@@ -62,10 +62,10 @@
         type="submit"
         :loading="submitting"
         label="Enviar"
-        class="q-mt-md full-width"
+        class="q-mt-md full-width " 
         :color="color"
         @click="simulateSubmit"
-        :disable=" pressed===false "
+        :disable="pressed===false"
         
       >
         <template v-slot:loading>
@@ -193,7 +193,6 @@ export default {
 updated(){
   if(this.value1 == 1){
     this.gameOver()
-
   }
   
 }
@@ -299,7 +298,7 @@ next (val){
         clearInterval(this.timeCounter)
         if (this.questao[this.id].resposta == this.resposta) {
         this.alertaCerto()
-        
+         this.pressed = false
         this.progress2 =  this.progress2+0.1;
 
         
@@ -338,8 +337,11 @@ next (val){
 
 
       }).onOk(() => {
-         console.log('OK')
+          this.pressed = false
+           this.color = 'light-green-1'  
          this.press = 0
+          this.selecionado = ''
+
            this.next++
       })
     },
@@ -364,7 +366,9 @@ next (val){
       )
       .onOk(() => {
         this.next++
-        console.log( 'primeiro '  +this.next)
+        this.selecionado = ''
+        this.color = 'light-green-1'   
+        this.pressed = false
         this.press = 0
 
 

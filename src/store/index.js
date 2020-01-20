@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 // import example from './module-example'
 
 import palavra from './Palavras'
+import config from './configs'
+
 
 Vue.use(Vuex)
 
@@ -20,7 +22,8 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       // example
-       palavra 
+       palavra ,
+       config
 
     },
 

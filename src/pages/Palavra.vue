@@ -34,8 +34,8 @@
               </div>
 
               <div
-                      class="text-caption text-italic text-weight-bold	"> Pronuncia 
-              <p class="text-body1 text-weight-regular"> " {{palavra.pronuncia}} " </p>
+                      class="text-caption text-italic text-weight-bold	"> Pronúncia 
+              <p class="text-body1 text-weight-regular" v-if="palavra.pronuncia"> " {{palavra.pronuncia}} " </p>
               </div>
 
         </q-card-section>  

@@ -13,17 +13,19 @@
       <q-card-actions >
           <div class="row">
 
-               <div class="col-8 q-pa-sm">
+               <div class="col-10 q-pa-sm">
                  Modo escuro
                </div> 
 
-            <div class="col-4  ">                
+            <div class="col-2 ">                
               <q-toggle
             :label="pinkModel"
             color="green-4"
             false-value= "Desativado"
             true-value="Ativado"
             v-model="pinkModel"
+            keep-color
+
     />
 
                </div> 
@@ -43,6 +45,8 @@
 <script>
 import { watch } from 'fs'
 import ProcessamentoDef from "../components/global/ProcessamentoDef";
+    import { mapActions, mapGetters , mapState} from 'vuex'
+
 
 export default {
    
@@ -56,42 +60,49 @@ data () {
       pinkModel: 'Desativado',
       greenModel: 42,
       redModel: true,
-         mostrar : false
+      mostrar : false
 
     }
   },
 
   computed:{
     
-    luz (){
-     if (this.pinkModel === "Ativado"){
-
-     
-   }
-    }
+         ...mapGetters ('config',['darkLabel']),
+   
    
   }
 ,
 
+updated(){
+ 
+}
+,
   mounted () {
-
           setTimeout (() => {
               this.mostrar = true
           }, 500)
 
-      }
+        
+      },
 
+      
+
+    methods:{
+...mapActions('config', [
+               'addDark', 'updateDark'
+           ]),
+    }
 
 ,
   watch: {
-
         pinkModel (newValue, oldValue) {
             if ( newValue === 'Ativado') {
-                return  this.$q.dark.set(true)
+                this.addDark()
             }
 
              if ( newValue === 'Desativado') {
-                return  this.$q.dark.set(false)
+                return    this.updateDark()
+
             }
             
         }
