@@ -6,7 +6,7 @@
 <q-page class="q-pa-sm">
 
 <div class="q-py-sm q-px-md text-h6">
-  Gategorias Populares
+  Categorias Populares
 </div>
 
  <div>
