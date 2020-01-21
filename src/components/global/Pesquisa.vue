@@ -5,7 +5,10 @@
             outlined
             dense
             v-model="searchText"
-            color="grey"
+             bg-color="grey-1"
+          
+
+            
            
             placeholder="Pesquise ..."
         >

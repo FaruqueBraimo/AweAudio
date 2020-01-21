@@ -8,7 +8,7 @@ module.exports = function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
        
-      'firebase', 'speech'
+      'firebase', 'speech', 'addressbar-color'
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -47,7 +47,7 @@ module.exports = function (ctx) {
       directives: ['TouchSwipe'],
 
       // Quasar plugins
-      plugins: [      'Dialog','LocalStorage',
+      plugins: [      'Dialog','LocalStorage', 'AddressbarColor',
       'SessionStorage'    ]
     },
 
@@ -86,12 +86,12 @@ module.exports = function (ctx) {
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false
+      pwa: true
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
-      workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
+      workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
         name: 'mozbantu',
