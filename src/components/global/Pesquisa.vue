@@ -1,25 +1,14 @@
 <template>
-    <div class="q-pa-md " style="width: 100% "  >
+ <q-dialog v-model="dialog" :position="position">
+      <q-card  class="q-px-md bg-white" >
         <q-input
-            rounded
-            outlined
-            dense
             v-model="searchText"
-             bg-color="grey-1"
-          
-
-            
-           
-            placeholder="Pesquise ..."
-        >
-            <template v-slot:prepend>
-                <q-icon name="search" />
-            </template>
-            <template v-slot:append>
-                <q-btn icon="short_text" @click="text = ''" flat round/>
-            </template>
+            placeholder="Pesquisa"
+            class="bg-white"
+        >        
         </q-input>
-    </div>
+      </q-card>
+    </q-dialog>
 </template>
 
 <script>
@@ -30,12 +19,26 @@
         props : ['object'],
         data () {
             return {
-                text: ''
+                text: '',
+                 dialog: true,
+                position: 'top'
             }
         },
 
           computed: {
             ...mapState('palavra', ['palavraSearchKey']),
+
+                 toggleDialog : {
+                get () {
+                    if (this.form === true){
+                    return this.form
+                    }
+ 
+                },
+                set () {
+                    return false
+                }
+            },
 
             searchText: {
                 get() {

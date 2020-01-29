@@ -8,7 +8,7 @@
 >
 <q-list class="rounded-borders"    >
             
-              <template  v-for="(i,id) in searchPalavras(palavras)" >
+              <template  v-for="(i,id,index) in searchPalavras(palavras)" >
                   <q-item class="q-mb-sm" clickable v-ripple :key="id" > 
                       <q-item-section @click="details(id)" >
                           <q-item-label class="text-body1">
@@ -32,7 +32,13 @@
                       </q-item-section>
                   </q-item>
                   
-                  <q-separator :key="i.traducao"/>    
+                  <q-separator :key="i.traducao"
+                  
+                     v-if="index < Object.keys(palavras).length -1"
+                      spaced
+                      inset
+                  
+                  />    
 
                  
               </template>
@@ -110,7 +116,7 @@ export default {
                 let timeStamp = val.seconds * 1000;
                 let data  =  new Date(timeStamp);
                 let formattedString = date.formatDate(data, 'DD - MM - YYYY')
-                return formattedString  ? 'Acessado aos: ' + formattedString : 'Nunca Acessado'
+                return formattedString  ? 'Acessado aos: ' + formattedString :  'Nunca Acessado'
             }
 }}
 

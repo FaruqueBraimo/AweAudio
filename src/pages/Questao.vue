@@ -1,7 +1,13 @@
 <template>
   
+ <transition
+  appear
+  enter-active-class="animated fadeInLeft"
+  leave-active-class="animated fadeOutLeft"
+>
+<q-page class="q-pa-sm  ex"
 
-<q-page class="q-pa-sm  ex">
+>
 
   <div class="row q-mt-md q-x-md">
       <div class="col">
@@ -35,7 +41,7 @@
  <q-card class="my-card  " v-for="(questao,id) in questoes" :key="id">
 
       <q-card-section>
-        <div class="text-h6">Selecione a traducao correta </div>
+        <div class="text-h6">Selecione a tradução correta </div>
       </q-card-section>
 
         <q-card-section >
@@ -76,7 +82,7 @@
    
 
 </q-page>
-
+ </transition>
 
 
 </template>
@@ -341,7 +347,6 @@ next (val){
            this.color = 'light-green-1'  
          this.press = 0
           this.selecionado = ''
-
            this.next++
       })
     },

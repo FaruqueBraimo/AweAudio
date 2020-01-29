@@ -1,15 +1,14 @@
 <template>
 
-<q-page v-if="mostrar"  >
+<q-page v-if="mostrar" class="q-py-md">
 
-  <pesquisa
+  <!-- <pesquisa
   @texto="texto=$event"
-
    :object="{
               canShowAddBtn: true,
               type: 'palavra'
             }"
-  />
+  /> -->
 
   <dicionario-component
   :texto="texto"
