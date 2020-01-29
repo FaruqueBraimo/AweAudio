@@ -22,12 +22,7 @@ const mutations = {
     deletePalavra (state, id) {
         Vue.delete(state.palavras, id)
     },
-    loading (state, val) {
-        state.loading = val
-    },
-    uploadProgress (state, val) {
-        state.uploadProgress = val
-    },
+   
     setPalavraSearchKey(state, val) {
         state.palavraSearchKey = val
     },

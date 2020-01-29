@@ -1,7 +1,6 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-
-    <q-header elevated class="bg-light-green-6">
+    <q-header elevated class="bg-light-green-6"  v-if="pesquisa === false" >
       <q-toolbar>
         <q-btn
           flat
@@ -12,23 +11,50 @@
           :icon="icon"
           aria-label="Menu"
         />
-
+        
         <q-toolbar-title>
      {{titulo}}
         </q-toolbar-title>
+      <q-space ></q-space>
+          <q-btn flat round dense icon="search" class="q-mr-xs" @click="pesquisa=true" v-if="this.$route.fullPath == '/'" />
 
       </q-toolbar>
     </q-header>
-<transition
+
+
+  <transition
   appear
   enter-active-class="animated fadeInLeft"
   leave-active-class="animated fadeOutLeft"
 >
+ <q-header  elevated class="bg-white"  v-if="pesquisa === true" >
+        <div class="row">
+            <div class="col-2 q-pt-md q-pl-sm">
+                 <q-btn color="light-green-6" flat round dense icon="arrow_back"  @click="pesquisa=false" />
+
+            </div>
+           <div class="col-10 q-pt-xs text-body1">
+                   <q-input borderless color="dark" autofocus    v-model="searchText"  placeholder="Pesquisa" class="text-body1"/>
+           </div>
+
+        </div>
+    </q-header>
+
+ </transition>
+
+
+<transition
+  appear
+  enter-active-class="animated bounceInLeft"
+  leave-active-class="animated fadeOutLeft"
+>
+
      <q-drawer
         v-model="drawer"
         show-if-above
         :width="200"
         :breakpoint="600"
+        
       >
         <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
           <q-list padding  class="text-grey-9"  >
@@ -110,10 +136,10 @@
           </div>
         </q-img>
       </q-drawer>
-</transition>
+</transition
 
-     
-
+>
+  
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -135,27 +161,35 @@
 </style>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+    import { mapActions, mapGetters , mapState} from 'vuex'
+
 export default {
   
   name: 'MyLayout',
-    computed: {
-           ...mapState ('palavra', [
-               'palavras'
-           ]),},
+   
 
   data () {
     return {
       leftDrawerOpen: false,
        drawer: false,
+       pesquisa: false,
+       object:{
+         type : 'palavra'
+       }
     
     }
 
     
   }
 
+  
+
 ,
 computed:{
+
+ ...mapState ('palavra', [
+               'palavras'
+           ]),
 
 titulo (){
   let caminho =  this.$route.fullPath
@@ -184,6 +218,20 @@ icon (){
 
               return icon
 }
+
+,
+ 
+                   
+            searchText: {
+                get() {
+                    return this.object.type === 'palavra' ? this.palavraSearchKey :  ''
+                },
+                set(val) {
+                    this.object.type === 'palavra' ? this.setPalavraSearchKey (val) : ''
+                }
+            }
+
+
 }
 ,
  methods:{
@@ -194,7 +242,10 @@ icon (){
             else {
               this.drawer = !this.drawer  
             }
-        }
+        },
+
+                    ...mapActions('palavra', ['setPalavraSearchKey']),
+
 
 }}
 </script>

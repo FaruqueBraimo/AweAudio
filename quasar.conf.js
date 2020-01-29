@@ -43,8 +43,8 @@ module.exports = function (ctx) {
       //            (not treeshaking Quasar; biggest bundle size; convenient)
       all: 'auto',
 
-      components: [],
-      directives: ['TouchSwipe'],
+      components: ['QPageScroller'],
+      directives: ['TouchSwipe', 'TouchHold'],
 
       // Quasar plugins
       plugins: [      'Dialog','LocalStorage', 'AddressbarColor',
