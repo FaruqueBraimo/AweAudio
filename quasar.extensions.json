@@ -14,6 +14,12 @@
         },
         "pwa": {
           "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+        },
+        "cordova": {
+          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3",
+          "splashscreenHash": "f3a37d8ad9d13f082b8489c14e78183f",
+          "splashscreenType": "pure",
+          "backgroundColor": "#528f01"
         }
       },
       "build": {
