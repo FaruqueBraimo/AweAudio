@@ -1,29 +1,22 @@
 {
   "@quasar/icon-genie": {
-    "minify_dev": "pngquant",
-    "minify_build": "pngquant",
+    "minify_dev": "optipng",
+    "minify_build": "optipng",
     "cordova": {
-      "background_color": "#528f01",
+      "background_color": "#8BC34A",
       "splashscreen_type": "pure"
     },
     "build_always": true,
     "__internal": {
       "dev": {
         "spa": {
-          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+          "iconHash": "33ea0dde78c09f91bd39952c9d0ca300"
         },
         "pwa": {
-          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
+          "iconHash": "d43c9a9f3e56e1a028ce5c82df21e665"
         }
       },
-      "build": {
-        "spa": {
-          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
-        },
-        "pwa": {
-          "iconHash": "4ccb11f8fcf30f338d32859047fd3ad3"
-        }
-      }
+      "build": {}
     }
   }
 }

@@ -31,10 +31,23 @@
         <div class="row">
             <div class="col-2 q-pt-md q-pl-sm">
                  <q-btn color="light-green-6" flat round dense icon="arrow_back"  @click="pesquisa=false" />
-
             </div>
            <div class="col-10 q-pt-xs text-body1">
-                   <q-input borderless color="dark" autofocus    v-model="searchText"  placeholder="Pesquisa" class="text-body1"/>
+                   <q-input borderless color="dark" autofocus    v-model="searchText"  placeholder="Pesquisa" class="text-body1"
+                   
+                   
+                 
+                   >
+                   
+          <template v-slot:append class="q-pr-md">
+          <q-icon v-if="searchText !== ' ' " name="close" @click="searchText = ''" class="cursor-pointer q-mr-lg" />
+        </template>
+
+
+
+
+
+                   </q-input>
            </div>
 
         </div>
@@ -112,7 +125,7 @@
               </q-item-section>
 
               <q-item-section>
-                Definicoes
+                Definições
               </q-item-section>             
             </q-item>
             <q-item clickable v-ripple to="share">
@@ -139,6 +152,48 @@
 </transition
 
 >
+
+<q-footer elevated class="" v-if="this.$route.fullPath == '/'"  >
+        <div>
+            <q-tabs
+                indicator-color="transparent"
+                active-color="light-green-6"
+                no-caps
+                class="bg-white text-grey-5 shadow-0 adjust-size "
+            >
+
+             <q-route-tab
+
+                    to="/"
+                    exact
+                    icon="home"
+                  
+
+                   
+                />
+
+                  <q-route-tab
+
+                    to="/diario"
+                    exact
+                    icon="timer"
+                  
+                />
+
+              
+
+
+                  <q-route-tab
+
+                    to="/about"
+                    exact
+                    icon="info"
+                   
+                />   
+            </q-tabs>
+        </div>
+    </q-footer>
+
   
     <q-page-container>
       <router-view />
@@ -247,5 +302,12 @@ icon (){
                     ...mapActions('palavra', ['setPalavraSearchKey']),
 
 
-}}
+}
+
+  ,
+
+
+
+
+}
 </script>

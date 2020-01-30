@@ -94,13 +94,14 @@ module.exports = function (ctx) {
       workboxPluginMode: 'InjectManifest', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'mozbantu',
-        short_name: 'mozbantu',
+        name: 'Por Faruque Braimo',
+        short_name: 'Ekoty',
         description: 'Um jogo que vai abranger linguas bantus nacionais',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        background_color: '#A6D72D',
+        theme_color: '#ffffff',
+        color: '#ffffff',
         icons: [
           {
             'src': 'statics/icons/icon-128x128.png',
