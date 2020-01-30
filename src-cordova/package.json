@@ -1,8 +1,8 @@
 {
   "name": "org.cordova.quasar.app",
-  "displayName": "mozbantu",
+  "displayName": "Ekoty",
   "version": "1.0.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "description": "Um jogo/Dicionário em koty",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
