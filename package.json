@@ -1,8 +1,8 @@
 {
-  "name": "mozbantu",
+  "name": "ekoty",
   "version": "0.0.1",
-  "description": "Um jogo que vai abranger linguas bantus nacionais",
-  "productName": "mozbantu",
+  "description": "Um jogo/Dicionário em koty",
+  "productName": "Ekoty",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
   "author": "FaruqueBraimo <faruquebraimo@gmail.com>",

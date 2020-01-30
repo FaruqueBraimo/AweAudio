@@ -4,22 +4,16 @@
 
 <div class="q-pa-sm">
     
-<q-card class="my-card q-pa-sm" flat >
-  
- 
-            <!-- this.$route.params.id; -->
 
+          <div class="row q-pa-lg  text-body1">
 
-      <q-card-actions >
-          <div class="row">
-
-               <div class="col-10 q-pa-sm">
+               <div class="col-10 q-pa-sm  justify-end">
                  Modo escuro
                </div> 
 
-            <div class="col-2 ">                
+            <div class="col-2">                
               <q-toggle
-            :label="pinkModel"
+            class=""
             color="green-4"
             false-value= "Desativado"
             true-value="Ativado"
@@ -31,9 +25,7 @@
                </div> 
 
           </div>
-      </q-card-actions>
-    </q-card>
-    
+   
 
 </div>
 
