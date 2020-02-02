@@ -68,9 +68,8 @@
         type="submit"
         :loading="submitting"
         label="Enviar"
-        :class="personalized" 
+        class="q-mt-md full-width " 
         :color="color"
-
         @click="simulateSubmit"
         :disable="pressed===false"
         
@@ -96,8 +95,7 @@ export default {
   data () {
     return {
       pressed: false,
-      color : 'grey-11',
-     personalized:   'q-mt-md full-width text-grey',
+      color : 'light-green-1',
       test: '',
       value1: 30,
       next: 1,
@@ -257,8 +255,7 @@ next (val){
         pressionar(val,resp,idSelected){
 
                   this.pressed = true
-                  this.color = 'light-green-6 text-white'  
-                  this.personalized = ' q-mt-md full-width  text-white'
+                  this.color = 'light-green-6'  
                   this.press = val
                   this.resposta = resp
                   this.selecionado = resp;
@@ -382,11 +379,6 @@ next (val){
 
       })
     },
-
-  },
-   destroyed(){
-        clearTimeout(timer)
-
   }
   
 }
@@ -395,7 +387,12 @@ next (val){
 
 <style>
 
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans&display=swap');
 
+.ex {
+font-family: 'Alegreya Sans', sans-serif;
+
+}
 
 
 </style>

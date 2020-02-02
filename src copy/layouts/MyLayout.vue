@@ -13,7 +13,7 @@
         />
         
         <q-toolbar-title>
-          {{titulo}}
+     {{listen}}
         </q-toolbar-title>
       <q-space ></q-space>
           <q-btn flat round dense icon="search" class="q-mr-xs" @click="pesquisa=true" v-if="this.$route.fullPath == '/'" />
@@ -21,12 +21,6 @@
       </q-toolbar>
     </q-header>
 
-
-<transition
-  appear
-  enter-active-class="animated fadeInLeft"
-  leave-active-class="animated fadeOutLeft"
->
  <q-header  elevated class="bg-white"  v-if="(pesquisa === true )" >
         <div class="row"   >
             <div class="col-2 q-pt-md q-pl-sm">
@@ -39,16 +33,7 @@
                    >
                    
           <template v-slot:append class="q-pr-md">
-            <transition
-  appear
-  enter-active-class="animated rotateIn"
-  leave-active-class="animated rotateOut"
->
-          <q-icon v-if="hear === true" name="close" @click="searchText = ''; hear = false" class="cursor-pointer q-mr-lg" />
-      
-      </transition
- 
->
+          <q-icon v-if="searchText !== ' ' " name="close" @click="searchText = ''" class="cursor-pointer q-mr-lg" />
         </template>
 
 
@@ -61,14 +46,12 @@
         </div>
     </q-header>
 
-</transition
- 
->
 
 
 <transition
   appear
-  
+  enter-active-class="animated bounceInLeft"
+  leave-active-class="animated fadeOutLeft"
 >
 
      <q-drawer
@@ -142,18 +125,19 @@
                 <q-icon name="share" />
               </q-item-section>
 
-               <q-item-section>
+              <q-item-section>
                 Compartilhar
               </q-item-section>  
             </q-item>
           </q-list>
         </q-scroll-area>
-        <q-img class="absolute-top bg-light-green-6"   style="height: 150px ">
-           <div class="absolute-center bg-transparent">
+        <q-img class="absolute-top" src="statics/cul2.jpg" style="height: 150px">
+          <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
-              <img src="statics/boy-avatar.png">
+              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
             </q-avatar>
-            <div class="text-white text-center"> @Ella</div>
+            <div class="text-weight-bold">Culssume Abacar</div>
+            <div>@Ella</div>
           </div>
         </q-img>
       </q-drawer>
@@ -172,9 +156,9 @@
 
              <q-route-tab
 
-                    to="/profile"
+                    to="/"
                     exact
-                    icon="person_pin"
+                    icon="home"
                   
 
                    
@@ -184,18 +168,9 @@
 
                     to="/diario"
                     exact
-
+                    icon="timer"
                   
-                >
-
-           <q-spinner-grid
-          color="light-green-6"
-          size="1.7em"
-        />
-
-                  </q-route-tab>
-
-
+                />
 
               
 
@@ -236,6 +211,7 @@
     import { mapActions, mapGetters , mapState} from 'vuex'
 import { EventBus } from '../functions/bus.js';
 
+     var bus = new Vue();
 
 
 export default {
@@ -243,9 +219,7 @@ export default {
   name: 'MyLayout',
   
    created (){
-   EventBus.$on('i-got-clicked', clickCount => {
-  console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
-});
+   
   }
   ,
 
@@ -254,7 +228,6 @@ export default {
       leftDrawerOpen: false,
        drawer: false,
        pesquisa: false,
-       hear: false,
        object:{
          type : 'palavra'
        }
@@ -276,11 +249,13 @@ computed:{
 
            listen(){
              let pesquisa = false
-            
-  EventBus.$on('i-got-clicked', data => {
+              bus.$on('changeIt', (data) => {
+      this.pesquisa = data;
+      pesquisa = this.pesquisa
+      console.log(this.pesquisa)
+            console.log('data' ,  data)
 
-    pesquisa = data
-});
+    })
 
     return pesquisa
            },
@@ -321,19 +296,14 @@ icon (){
                     return this.object.type === 'palavra' ? this.palavraSearchKey :  ''
                 },
                 set(val) {
-                   
                     this.object.type === 'palavra' ? this.setPalavraSearchKey (val) : ''
-                     if(val){
-                      this.hear = true 
-                    }  
                 }
             }
 
 
 }
-
-
 ,
+
 
  methods:{
         drawerOrNor(){
@@ -352,34 +322,16 @@ icon (){
 
   ,
 
-  beforeUpdate(){
-  }
-  ,
  updated(){
-
-         console.log(this.searchText)
-
    this.searchText =   ''
    
-     EventBus.$on('i-got-clicked', data => {
-
-    this.pesquisa = data
-     this.hear = false
-    console.log( 'pesquisa' , this.pesquisa)
-
-
-
-});
-
-
-
+   
    
  }
 
   ,
   destroyed(){
-    EventBus.$off('i-got-clicked');
-
+     bus.$off();
   }
 
 

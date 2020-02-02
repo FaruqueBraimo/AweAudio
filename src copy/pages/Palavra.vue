@@ -83,12 +83,13 @@ font-family: 'Alegreya Sans', sans-serif;
 import { mapActions, mapState } from 'vuex'
 import { log } from 'util'
 import Vue from 'vue'
-import { EventBus } from '../functions/bus.js';
+ var bus = new Vue();
 
 export default {
 
 mounted(){
- EventBus.$emit('i-got-clicked', false);
+bus.$emit('changeIt', false);
+
 }
 ,
 

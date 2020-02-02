@@ -6,12 +6,12 @@
         style="width:30vw;max-width:150px;"
       >
     </p>
-    <p class="text-faded">Lamento,pág. não encontrada<strong>(404)</strong></p>
+    <p class="text-faded">Sorry, nothing here...<strong>(404)</strong></p>
     <q-btn
-      color="light-green-6"
+      color="secondary"
       style="width:200px;"
       to="/"
-      label="Voltar"
+      label="Go back"
     />
   </div>
 </template>

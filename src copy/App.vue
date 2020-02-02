@@ -1,5 +1,5 @@
 <template>
-  <div id="q-app" class="text-grey-9">
+  <div id="q-app">
     <router-view  v-if="$q.platform.is.mobile">
 
     </router-view>

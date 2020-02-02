@@ -1,0 +1,10 @@
+// app global css in SCSS form
+@font-face {
+    font-family: customfont;
+    src: url(./Autobus-Bold.ttf);
+  }
+  
+  // declare a class which applies it
+  .my-font {
+    font-family: 'customfont';
+  }
