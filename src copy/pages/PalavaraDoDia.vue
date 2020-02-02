@@ -22,14 +22,16 @@
           ">
 
    <div class="row">
-     <div class="col-6 items-start q-pt-xs text-left">
+     <div class="col-6 items-start">
       <q-item-section side>
             <q-btn icon="star" flat round color="grey" />
         </q-item-section>
      </div>
 
-      <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="primary" label="gratis"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
 
    </div>
@@ -63,9 +65,12 @@
         </q-item-section>
      </div>
 
-    <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="primary" label="gratis"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
+
    </div>
      
 
@@ -103,9 +108,12 @@
         </q-item-section>
      </div>
 
-      
-     <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="primary" label="gratis"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
+
+        
      </div>
 
    </div>
@@ -139,9 +147,10 @@
         </q-item-section>
      </div>
 
-     
-     <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="primary" label="gratis"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
 
    </div>
@@ -182,9 +191,14 @@
         </q-item-section>
      </div>
 
-     <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
+
+        
      </div>
+
    </div>
      
 
@@ -216,8 +230,10 @@
         </q-item-section>
      </div>
 
-    <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
 
    </div>
@@ -255,8 +271,12 @@
         </q-item-section>
      </div>
 
-     <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
+
+        
      </div>
 
    </div>
@@ -290,9 +310,12 @@
         </q-item-section>
      </div>
 
-     <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
+
    </div>
      
 
@@ -328,8 +351,12 @@
         </q-item-section>
      </div>
 
-    <div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
+
+        
      </div>
 
    </div>
@@ -362,8 +389,11 @@
             <q-btn icon="star" flat round color="grey" />
         </q-item-section>
      </div>
-<div class="col-6 text-right q-pl-sm  q-pt-md q-pr-sm 	">
-         <q-badge outline color="deep-orange" label="Pago"  class="q-mr-xs "/>
+
+      <div class="col-6 text-right q-pl-sm	">
+      <q-item-section class="text-right q-pl-lg">
+            <q-btn icon="more_horiz" flat round color="grey" />
+        </q-item-section>
      </div>
 
    </div>

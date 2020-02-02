@@ -1,8 +1,7 @@
 <template>
 <q-page class=" " v-if="mostrar"> 
    
-  <div class="text-body1  text-grey-9
- " >
+  <div class="text-body1 " >
         
     <q-card  flat class="my-card  text-weight-light touch "
     square
@@ -23,7 +22,7 @@
 
    </div> 
    
-   <div class=" text-weight-light touch q-pl-md   text-grey-9 fixed-bottom" >
+   <div class=" text-weight-light touch q-pl-md  fixed-bottom" >
     
      
 
