@@ -1,6 +1,6 @@
 <template>
     <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-light-green-6"  v-if="pesquisa === false" >
+    <q-header elevated class="bg-light-blue"  >
       <q-toolbar>
         <q-btn
           flat
@@ -16,54 +16,16 @@
           {{titulo}}
         </q-toolbar-title>
       <q-space ></q-space>
-          <q-btn flat round dense icon="search" class="q-mr-xs" @click="pesquisa=true" v-if="this.$route.fullPath == '/'" />
+          <q-btn flat round dense icon="wb_sunny"  color="yellow" class="q-mr-xs"  v-if="noite===true" @click="light"/>
+            <q-btn flat round dense icon="brightness_3"  color="white" class="q-mr-xs" @click="dark"  v-if="noite!=true" />
+
 
       </q-toolbar>
     </q-header>
 
 
-<transition
-  appear
-  enter-active-class="animated fadeInLeft"
-  leave-active-class="animated fadeOutLeft"
->
- <q-header  elevated class="bg-white"  v-if="(pesquisa === true )" >
-        <div class="row"   >
-            <div class="col-2 q-pt-md q-pl-sm">
-                 <q-btn color="light-green-6" flat round dense icon="arrow_back"  @click="pesquisa=false" />
-            </div>
-           <div class="col-10 q-pt-xs text-body1">
-                   <q-input borderless color="dark" autofocus    v-model="searchText"  placeholder="Pesquisa" class="text-body1"
-                   
-                                
-                   >
-                   
-          <template v-slot:append class="q-pr-md">
-            <transition
-  appear
-  enter-active-class="animated rotateIn"
-  leave-active-class="animated rotateOut"
->
-          <q-icon v-if="hear === true" name="close" @click="searchText = ''; hear = false" class="cursor-pointer q-mr-lg" />
-      
-      </transition
- 
->
-        </template>
 
 
-
-
-
-                   </q-input>
-           </div>
-
-        </div>
-    </q-header>
-
-</transition
- 
->
 
 
 <transition
@@ -83,77 +45,36 @@
      
             <q-item clickable v-ripple to="/" exact  >
               <q-item-section avatar>
-                <q-icon name="menu_book" />
+                <q-icon name="home" />
               </q-item-section>
 
               <q-item-section   >
-               Dicionário
+               Início
               </q-item-section>
             </q-item>
 
 
 
-            <q-item clickable v-ripple to="diario"  active-color="light-green-6">
+            <q-item clickable v-ripple to="/about"  active-color="light-blue">
               <q-item-section avatar>
-                <q-icon name="timer" />
+                <q-icon name="info" />
               </q-item-section>
 
               <q-item-section>
-               Pratique
+               About
               </q-item-section>
             </q-item>
 
             
-            <q-item clickable v-ripple to="favoritos" >
-              <q-item-section avatar>
-                 <q-icon name="favorite" />
-              </q-item-section>
-
-              <q-item-section>
-                Favoritos
-              </q-item-section>
-            </q-item>
-
-            
-            <q-item clickable v-ripple to="historico">
-              <q-item-section avatar>
-                <q-icon name="history" />
-              </q-item-section>
-
-              <q-item-section>
-               Histórico
-              </q-item-section>
-            </q-item>
-
-
-
-
-            <q-item clickable v-ripple to="definicoes">
-              <q-item-section avatar>
-                <q-icon name="settings" />
-              </q-item-section>
-
-              <q-item-section>
-                Definições
-              </q-item-section>             
-            </q-item>
-            <q-item clickable v-ripple to="share">
-              <q-item-section avatar>
-                <q-icon name="share" />
-              </q-item-section>
-
-               <q-item-section>
-                Compartilhar
-              </q-item-section>  
-            </q-item>
+          
           </q-list>
         </q-scroll-area>
-        <q-img class="absolute-top bg-light-green-6"   style="height: 150px ">
+        <q-img class="absolute-top bg-light-blue"   style="height: 150px ">
            <div class="absolute-center bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="statics/boy-avatar.png">
             </q-avatar>
-            <div class="text-white text-center"> @Ella</div>
+            <div class="text-white text-center"> @FBraimo</div>
           </div>
         </q-img>
       </q-drawer>
@@ -165,7 +86,7 @@
         <div>
             <q-tabs
                 indicator-color="transparent"
-                active-color="light-green-6"
+                active-color=" light-blue"
                 no-caps
                 class="bg-white text-grey-5 shadow-0 adjust-size "
             >
@@ -174,7 +95,7 @@
 
                     to="/profile"
                     exact
-                    icon="person_pin"
+                    icon="grade"
                   
 
                    
@@ -182,14 +103,14 @@
 
                   <q-route-tab
 
-                    to="/diario"
+                    to="/"
                     exact
 
                   
                 >
 
            <q-spinner-grid
-          color="light-green-6"
+          color="light-blue"
           size="1.7em"
         />
 
@@ -210,9 +131,10 @@
             </q-tabs>
         </div>
     </q-footer>
-
+  
   
     <q-page-container>
+     
       <router-view />
     </q-page-container>
   </q-layout>
@@ -253,7 +175,7 @@ export default {
     return {
       leftDrawerOpen: false,
        drawer: false,
-       pesquisa: false,
+       noite: false,
        hear: false,
        object:{
          type : 'palavra'
@@ -273,6 +195,8 @@ computed:{
                'palavras'
            ]),
 
+              ...mapGetters ('config',['darkLabel']),
+
 
            listen(){
              let pesquisa = false
@@ -288,17 +212,13 @@ computed:{
 titulo (){
   let caminho =  this.$route.fullPath
 
-  if ( caminho == "/") return "Ekoty"
+  if ( caminho == "/") return "Aweaudio"
   else if  ( caminho == "/") return "Ekoty"
   else if  ( caminho == "/about") return "About"
   else if  ( caminho == "/palavradodia") return "Palavra do dia"
-  else if  ( caminho == "/favoritos") return "Favoritos"
+  
 
-  else if  ( caminho == "/definicoes") return "Definiçoes"
-  else if  ( caminho == "/historico") return "histórico"
-    else if  ( caminho == "/diario") return "Pratique"
-
-  else return "Definição"
+  else return "Detalhes"
 
 
 },
@@ -336,6 +256,26 @@ icon (){
 ,
 
  methods:{
+
+   ...mapActions('config', [
+               'addDark', 'updateDark'
+           ]),
+
+          dark(){
+               this.addDark()
+               this.noite = true
+
+ 
+  
+
+          }
+            ,
+
+          light(){
+                this.updateDark()
+                 this.noite = false
+            },
+
         drawerOrNor(){
             if (this.icon == 'arrow_back') {
               this.$router.go(-1)

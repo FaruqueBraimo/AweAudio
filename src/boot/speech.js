@@ -17,7 +17,7 @@ export default async ({ Vue }) => {
         Loading.show({
           delay: 0,
           spinner: QSpinnerAudio, // ms,
-          backgroundColor: 'light-green-6'
+          backgroundColor: 'light-blue'
         })
       })
 

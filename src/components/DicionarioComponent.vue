@@ -1,5 +1,4 @@
 <template >
-
 <q-page>
    <transition
   appear
@@ -8,14 +7,13 @@
 >
 <q-list class="rounded-borders"    >
             
-              <template  v-for="(i,id,index) in searchPalavras(palavras)" >
-                  <q-item class="q-mb-sm" clickable v-ripple :key="id" > 
-                      <q-item-section @click="details(id)" >
+              <template  >
+                  <q-item class="q-mb-sm" clickable v-ripple  > 
+                      <q-item-section @click="details()" >
                           <q-item-label class="text-body1">
+                            Boas Vindas
                             
-                            
-                            {{i.traducao}}</q-item-label>
-                          <q-item-label caption lines="1" v-if="i.dataAcesso"> {{i.dataAcesso | filterDate}}</q-item-label>
+                           </q-item-label>
                       </q-item-section>
               <q-item-section side>
                           <q-btn
@@ -26,20 +24,36 @@
                               icon="record_voice_over"
                               rounded
                               size="sm"
-                              color="light-green-6"
-                              @click="audio(i.palavra)"
+                              color="light-blue"
+                              @click="audio('Oi, seja bem vindo, para converter texto em áudio clique no botão abaixo , com sinal mais!')"
                           />
                       </q-item-section>
+                   
                   </q-item>
+                     <q-separator/>
                   
-                  <q-separator :key="i.traducao"
-                  
-                     v-if="index < Object.keys(palavras).length -1"
-                      spaced
-                      inset
-                  
-                  />    
-
+                   <q-item class="q-mb-sm" clickable v-ripple > 
+                      <q-item-section @click="details()" >
+                          <q-item-label class="text-body1">
+                           Texto longo sobre FRELIMO
+                            
+                           </q-item-label>
+                      </q-item-section>
+              <q-item-section side>
+                          <q-btn
+                             unelevated
+                              outline
+                              no-caps
+                              flat
+                              icon="record_voice_over"
+                              rounded
+                              size="sm"
+                              color="light-blue"
+                              @click="audio('Brada,não tive tempo de copiar aquele texto.')"
+                          />
+                      </q-item-section>
+                   
+                  </q-item>
                  
               </template>
 
@@ -74,7 +88,8 @@ export default {
       voiceSelect: 'pt-BR',
       saveObject: {
         his : true,
-        dataAcesso : new Date
+        dataAcesso : new Date,
+        frelimo : 'A mentira não faz História de uma Nação” Fanuel Guidion Mahluza, o homem que deu o nome “FRELIMO” ao movimento de libertação de Moçambique.    '
 
         } 
     
@@ -88,7 +103,7 @@ export default {
                'addPalavra', 'updatePalavra'
            ]),
 
-            handleSwipe ({ evt, ...info }) {
+      handleSwipe ({ evt, ...info }) {
       this.info = info
 
       // native Javascript event
@@ -101,11 +116,9 @@ export default {
           },
 
       details(id){
-        this.$router.push('palavra/' + id)
-                 this.updatePalavra ({
-                        id: id,
-                        updates: this.saveObject
-                    })
+
+        this.$q.notify('Toque no Icone ao lado para ouvir o áudio')
+      
             }
  
   }

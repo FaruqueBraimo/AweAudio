@@ -44,7 +44,7 @@ export default {
 
         this.listenPalavraRealTimeChanges ()
         
-     this.$q.addressbarColor.set('#AED581')
+     this.$q.addressbarColor.set('#03A9F4')
 
     },
 

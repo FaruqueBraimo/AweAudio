@@ -47,7 +47,7 @@ module.exports = function (ctx) {
       directives: ['TouchSwipe', 'TouchHold'],
 
       // Quasar plugins
-      plugins: [      'Dialog','LocalStorage', 'AddressbarColor',
+      plugins: [      'Dialog','LocalStorage', 'AddressbarColor', 'Notify',
       'SessionStorage'    ]
     },
 

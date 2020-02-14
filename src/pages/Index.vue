@@ -15,7 +15,9 @@
   
   />
 
-
+  <q-page-sticky position="bottom-right" :offset="[18, 18]" v-if="$route.fullPath === '/'">
+            <q-btn  unelevated fab icon="add" color="light-blue" @click="$router.push('/text')"/>
+    </q-page-sticky>
  
 
 </q-page>

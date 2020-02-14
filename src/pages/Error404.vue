@@ -8,7 +8,8 @@
     </p>
     <p class="text-faded">Lamento,pág. não encontrada<strong>(404)</strong></p>
     <q-btn
-      color="light-green-6"
+    unelevated
+      color="light-blue"
       style="width:200px;"
       to="/"
       label="Voltar"
