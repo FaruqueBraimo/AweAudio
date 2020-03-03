@@ -226,9 +226,13 @@ titulo (){
 icon (){
   let caminho =  this.$route.fullPath
   let icon = ''          
-             if ( caminho.search("/palavra")) icon = "menu"
+             if ( caminho === '/') {
+                icon = "menu"
+             } 
                 
-              else icon =  "arrow_back"
+              else {
+                icon =  "arrow_back"
+              }
 
               return icon
 }

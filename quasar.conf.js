@@ -86,7 +86,7 @@ module.exports = function (ctx) {
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: true
+      pwa: false
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -95,8 +95,8 @@ module.exports = function (ctx) {
       workboxOptions: {}, // only for GenerateSW
       manifest: {
         name: 'Por Faruque Braimo',
-        short_name: 'Ekoty',
-        description: 'Um jogo que vai abranger linguas bantus nacionais',
+        short_name: 'AweAudio',
+        description: 'Transforme texte em audio',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#A6D72D',
@@ -141,7 +141,7 @@ module.exports = function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: true
+      // hideSplashscreen: true
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron

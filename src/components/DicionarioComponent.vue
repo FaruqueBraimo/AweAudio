@@ -8,8 +8,8 @@
 <q-list class="rounded-borders"    >
             
               <template  >
-                  <q-item class="q-mb-sm" clickable v-ripple  > 
-                      <q-item-section @click="details()" >
+                  <q-item class="q-mb-sm" clickable v-ripple   > 
+                      <q-item-section @click="details()"   >
                           <q-item-label class="text-body1">
                             Boas Vindas
                             
@@ -32,29 +32,7 @@
                   </q-item>
                      <q-separator/>
                   
-                   <q-item class="q-mb-sm" clickable v-ripple > 
-                      <q-item-section @click="details()" >
-                          <q-item-label class="text-body1">
-                           Texto longo sobre FRELIMO
-                            
-                           </q-item-label>
-                      </q-item-section>
-              <q-item-section side>
-                          <q-btn
-                             unelevated
-                              outline
-                              no-caps
-                              flat
-                              icon="record_voice_over"
-                              rounded
-                              size="sm"
-                              color="light-blue"
-                              @click="audio('Brada,não tive tempo de copiar aquele texto.')"
-                          />
-                      </q-item-section>
-                   
-                  </q-item>
-                 
+                  
               </template>
 
           </q-list> 
@@ -82,8 +60,8 @@ export default {
            },
   data () {
     return {
-      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-,
+      lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      block : false,
         text: 'oi',
       voiceSelect: 'pt-BR',
       saveObject: {
@@ -115,9 +93,13 @@ export default {
           
           },
 
-      details(id){
+           details(id){
 
-        this.$q.notify('Toque no Icone ao lado para ouvir o áudio')
+             this.$q.notify( {
+                  color : 'light-blue',
+                  message : 'Toque no Icone ao lado para ouvir o áudio',
+                
+                 })
       
             }
  

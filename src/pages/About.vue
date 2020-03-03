@@ -1,21 +1,21 @@
 <template>
-<q-page class=" " v-if="mostrar"> 
+<q-page class=" text-body1 text-justify" v-if="mostrar"> 
    
-  <div class="text-subtitle1  text-grey-9
+  <div class="  text-grey-9
  " >
         
-    <q-card  flat class="my-card  text-weight-light touch "
+    <q-card  flat class="my-card  "
     square
     >
-      <q-card-section class=" text-justify ">
-       Esta aplicação  foi desenvolvida com objectivo de transformar <b class="text-italic">Um texto em áudio</b>.  
+      <q-card-section class="  ">
+       Esta aplicação  foi desenvolvida com objectivo de transformar <b class="text-italic">um texto em áudio</b>.  
       </q-card-section>
 
-       <q-card-section class=" text-justify	">
+       <q-card-section class=" 	">
       Especial agradecimento a turma <b class="text-italic">Informática-UEM-2017</b>, pois o desenvolvedor da aplicação, pertence a essa turma. 
       </q-card-section>
 
-      <q-card-section class="text-justify	"> 
+      <q-card-section class="	"> 
           Se você encontrar algo que parece não fazer sentido ou  se estiver interressado em colaborar, por favor ,<b class="text-italic">feel free</b> em me contactar:
       </q-card-section>
     </q-card>
@@ -37,14 +37,14 @@
           <div>
   <q-chip square>
         <q-avatar icon="email" color="light-blue" text-color="white" />
-        faruquebraimo@gmail.com
+        <a href="mailto:faruquebraimo@gmail.com" class="text-light-blue "> faruquebraimo@gmail.com </a> 
       </q-chip>
 
           </div>
      
        <q-chip square>
         <q-avatar icon="phone" color="light-blue" text-color="white" />
-        846771216
+       <a href="tel:846771216" class="text-light-blue "> 846771216</a> 
       </q-chip>
  
    </div>
